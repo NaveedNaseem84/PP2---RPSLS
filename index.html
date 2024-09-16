@@ -20,14 +20,54 @@
 
 <body>
     <!--Header Content-->
-    <header>body</header>
+
+    <header><img id="logo" src="assets/images/RPSLS_logo_small.jpg" height="100" width="370"
+            alt="Rock Paper Scissors Lizard Spock Logo" aria-label="Rock Paper Scissors Lizard Spock Logo">
+    </header>
+
     <!--Main Body Content-->
-    <main>main</main>
+    <main>
+        <div id="game-board">
+        <section id="game-board-info" class="text-center">
+            <h1>Welcome and enjoy!</h1>
+            <div id="game-updates">
+                <span id="game-status-message">Choose your pose.</span>
+            </div>
+        </section>
+        
+            <div id="btn-gameplay-btn-group" class="text-center">
+                <button id="Rock" class="btn-game-button"><i class="far fa-hand-rock"></i></button>
+                <button id="Paper" class="btn-game-button"><i class="fa-regular fa-note-sticky"></i></button>
+                <button id="Scissors" class="btn-game-button"><i class="fa-regular fa-hand-scissors"></i></button>
+                <button id="Lizard" class="btn-game-button"><i class="fa-regular fa-hand-lizard"></i></button>
+                <button id="Spock" class="btn-game-button"><i class="fa-regular fa-hand-spock"></i></button>
+            </div>
+            <div class="text-center">
+
+                <p>Choices:</p>
+                <div>Player: <span id="playerChoice"></span></div>
+                <div>Computer: <span id="computerChoice"></span></div>
+                <p>Scores:</p>
+                <div>Player: <span id="playerScore">0</span></div>
+                <div>Computer: <span id="computerScore">0</span></div>
+            </div>
+
+            <div class="text-center btn-game-controls">
+                <button id="reset" class="btn-game-button btn-game-controls"><i class="fa-solid fa-rotate-left">
+                         Restart</i></button>
+                <button id="reset" class="btn-game-button btn-game-controls"><i class="fa-solid fa-circle-info">
+                         Instructions</i></button>
+            </div>
+        </div>
+
+    </main>
+
     <!--footer-->
-    <footer>footer</footer>
+    <footer></footer>
 
     <!--Script Imports-->
     <script src="assets/js/script.js"></script>
+    <script src="https://kit.fontawesome.com/5d6f06bc3f.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,11 +1,78 @@
+/*google font import = Orbitron */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 header {
-    background-color: green;
+    background-color: #183153;
 }
 
-main{
-    background-color: red;
+main {
+    background-color: #183153;
+    color: white;
+}
+
+body {
+    background-color: #183153;
+    font-family: 'inria-sans-light', sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    
+   
+}
+
+.text-center {
+
+    text-align: center;
+}
+
+.btn-game-button {
+    border: none;
+    text-align: center;
+    padding: 15px 15px 15px 15px;
+    background-color: #183052;
+    display: inline-block;
+    font-size: 1.3rem;
+
+}
+#logo{
+    margin:auto;
+    display: block;
+}
+
+i {
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 20px 20px 20px 20px;
+    color: white;
+    text-align: center;
+   
+}
+
+i:hover {
+    border: 2px solid red;
+}
+
+#playerScore, #computerScore {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+   
+}
+#game-board-info {
+    background-color: #183153;   
+    
+}
+
+#game-board { 
+    border: 2px solid white;
+    border-radius: 15px;
+   margin-left: 10px;
+   margin-right: 10px;
+  
+}
+
+.btn-game-controls{
+    font-size: 0.6rem;
 }
 
 footer {
-    background-color: yellow;
+    background-color: #183153;
 }
