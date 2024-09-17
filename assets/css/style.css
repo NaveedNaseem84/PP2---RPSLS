@@ -1,21 +1,27 @@
-/*google font import = Orbitron */
+/*google font import = Orbitron and inria-sans-light */
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 header {
     background-color: #183153;
+}
+header img {
+    width: 100%;
+    margin-left: 5px;
 }
 
 main {
     background-color: #183153;
     color: white;
+    margin: 0;
 }
 
 body {
     background-color: #183153;
     font-family: 'inria-sans-light', sans-serif;
     font-size: 1rem;
-    font-weight: bold;  
-   
+    font-weight: bold;
+    margin: 0;
 }
 
 .text-center {
@@ -25,15 +31,11 @@ body {
 .btn-game-button {
     border: none;
     text-align: center;
-    padding: 15px 15px 15px 15px;
-    background-color: #183052;
+    padding: 5px 5px 5px 5px;
+    background-color: #183153;
     display: inline-block;
-    font-size: 1.3rem;
-}
-
-#logo{
-    margin:auto;
-    display: block;
+    font-size: 1.3rem;    
+    
 }
 
 i {
@@ -42,34 +44,111 @@ i {
     padding: 20px 20px 20px 20px;
     color: white;
     text-align: center;
-   
+  
+
 }
 
 i:hover {
     border: 2px solid red;
 }
 
-#playerScore, #computerScore {
+#playerScore,
+#computerScore {
     font-family: 'Orbitron', sans-serif;
     font-size: 1.3rem;
-   
-}
-#game-board-info {
-    background-color: #183153;   
-    
 }
 
-#game-board { 
+#game-board-info {
+    background-color: #183153;
+
+}
+
+#game-board {
     border: 2px solid white;
     border-radius: 15px;
-   margin-left: 10px;
-   margin-right: 10px;  
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 25px;
 }
 
-.btn-game-controls{
+.btn-game-controls {
     font-size: 0.6rem;
+    padding-top: 10px;
 }
 
 footer {
     background-color: #183153;
+}
+
+/*media queries */
+
+/* Tablets and larger */
+@media screen and (min-width: 768px) {
+
+    
+    header img {
+        margin: auto;
+        width: 906px;
+        height: 220px;
+        text-align: center;
+    }
+
+    main {
+        font-size: 150%;
+        padding: 50px;
+
+    }
+
+    #game-board {
+
+        border-radius: 15px;
+       margin-left: 20%;
+    }
+
+}
+
+/* media query for laptops, desktops etc...*/
+@media screen and (min-width: 992px) {
+
+    header {
+        text-align: center;
+    }
+
+    header img {
+        margin: auto;
+        width: 871px;
+        height: 211px;
+        text-align: center;
+    }
+
+    body {
+        background-color: #6EACDA;
+    }
+
+    main {
+        background-color: #6EACDA;
+        font-size: 200%;
+        height: 50vh;
+    }
+
+    #game-board {
+        margin-top: 10px;
+        width: 50%;
+        margin: auto;
+        background-color: #183153;
+        padding-bottom: 40px;
+        border-width: 3px;
+    }
+
+    .btn-game-button {
+        padding: 15px 15px 15px 15px;
+        display: inline-block;
+        font-size: 200%;
+    }
+
+    #playerScore,
+    #computerScore {
+        font-size: 110%;
+    }
+  
 }
