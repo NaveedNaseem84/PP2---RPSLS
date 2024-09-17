@@ -14,13 +14,11 @@ body {
     background-color: #183153;
     font-family: 'inria-sans-light', sans-serif;
     font-size: 1rem;
-    font-weight: bold;
-    
+    font-weight: bold;  
    
 }
 
 .text-center {
-
     text-align: center;
 }
 
@@ -31,8 +29,8 @@ body {
     background-color: #183052;
     display: inline-block;
     font-size: 1.3rem;
-
 }
+
 #logo{
     margin:auto;
     display: block;
@@ -65,8 +63,7 @@ i:hover {
     border: 2px solid white;
     border-radius: 15px;
    margin-left: 10px;
-   margin-right: 10px;
-  
+   margin-right: 10px;  
 }
 
 .btn-game-controls{
