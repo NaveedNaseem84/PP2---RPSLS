@@ -96,6 +96,7 @@ footer {
     main {
         font-size: 150%;
         padding: 50px;
+        height: 40vh;
 
     }
 
@@ -122,12 +123,12 @@ footer {
     }
 
     body {
-        background-color: #6EACDA;
+        background-color: #021526;
     }
 
     main {
-        background-color: #6EACDA;
-        font-size: 200%;
+        background-color: #021526;
+        font-size: 150%;
         height: 50vh;
     }
 
@@ -138,12 +139,13 @@ footer {
         background-color: #183153;
         padding-bottom: 40px;
         border-width: 3px;
+        font-size: 80%;
     }
 
     .btn-game-button {
         padding: 15px 15px 15px 15px;
         display: inline-block;
-        font-size: 200%;
+        font-size: 150%;
     }
 
     #playerScore,

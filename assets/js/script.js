@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 computerRandomChoice();
             }
             if (this.getAttribute("id") === "instructions") {
-                getInstructions();
+               getInstructions();
+              
+              
             }
         });
     }
@@ -35,6 +37,7 @@ Once selected, assign to a variable for the game.
 Update the computerChoice element on HTML form - only when the game has started! */
 
 function computerRandomChoice() {
+
     let gameSelection = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'];
     let ComputerChoice = gameSelection[(Math.floor(Math.random() * gameSelection.length))];
     document.getElementById("computerChoice").innerHTML = ComputerChoice;
@@ -45,12 +48,20 @@ Update the game-status-message with the outcome of the round */
 
 function playerWon() {
 
+    let playerScore =  document.getElementById("playerScore").innerHTML  
+    playerScore++;
+    document.getElementById("playerScore").innerHTML =playerScore;
+
 }
 
 /*Increment the computer score by 1 and update the computerScore element.
 Update the game-status-message with the outcome of the round */
 
 function computerWon() {
+
+    let computerScore =  document.getElementById("computerScore").innerHTML   
+    computerScore++; 
+    document.getElementById("computerScore").innerHTML =computerScore;
 
 }
 /*If player and Computer choose the same option, 
