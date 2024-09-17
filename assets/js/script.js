@@ -107,7 +107,17 @@ Update the game-status to notify player game has been reset.
 set the player and computer choice HTML elements to "" */
 
 function resetGame() {
-    alert("Reset function called");
+    let playerScore = document.getElementById("playerScore").innerHTML;
+    let computerScore = document.getElementById("computerScore").innerHTML;
+
+    playerScore = 0;
+    computerScore = 0;
+
+    document.getElementById("game-status-message").innerHTML = `Game reset. Choose your pose.`;
+    document.getElementById("playerScore").innerHTML = playerScore;
+    document.getElementById("computerScore").innerHTML = computerScore;
+    document.getElementById("computerChoice").innerHTML = "";
+    document.getElementById("playerChoice").innerHTML = "";
 
 }
 /* Provide user instructions for the user*/
