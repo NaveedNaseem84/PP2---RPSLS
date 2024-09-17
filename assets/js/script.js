@@ -36,15 +36,17 @@ function playGame() {
         (playerChoice === "Spock" && computerChoice === "Scissors") || (playerChoice === "Scissors" && computerChoice === "Lizard") || (playerChoice === "Lizard" && computerChoice === "Paper") ||
         (playerChoice === "Paper" && computerChoice === "Spock") || (playerChoice === "Spock" && computerChoice === "Rock")) {
         playerWon();
-    } 
+    } else if (computerChoice === "Rock" && playerChoice === "Scissors" || (computerChoice === "Scissors" && playerChoice === "Paper") || (computerChoice === "Paper" && playerChoice === "Rock") ||
+        (computerChoice === "Rock" && playerChoice === "Lizard") || (computerChoice === "Lizard" && playerChoice === "Spock") ||
+        (computerChoice === "Spock" && playerChoice === "Scissors") || (computerChoice === "Scissors" && playerChoice === "Lizard") || (computerChoice === "Lizard" && playerChoice === "Paper") ||
+        (computerChoice === "Paper" && playerChoice === "Spock") || (computerChoice === "Spock" && playerChoice === "Rock")) {
+        computerWon();
 
-    else if (computerChoice === "Rock" && playerChoice === "Scissors" || (computerChoice === "Scissors" && playerChoice === "Paper") || (computerChoice === "Paper" && playerChoice === "Rock") 
-     || (computerChoice === "Rock" && playerChoice === "Lizard") || (computerChoice === "Lizard" && playerChoice === "Spock") ||
-    (computerChoice === "Spock" && playerChoice === "Scissors") || (computerChoice === "Scissors" && playerChoice === "Lizard") || (computerChoice === "Lizard" && playerChoice === "Paper") ||
-    (computerChoice === "Paper" && playerChoice === "Spock") || (computerChoice === "Spock" && playerChoice === "Rock")) {
-    computerWon();
-}     
-    
+    }
+    else if(computerChoice===playerChoice){
+        gameDraw();
+    }
+
 }
 
 /*Randomly select a choice from Rock, Paper, Scissors, Lizard or Spock
@@ -69,7 +71,7 @@ function playerWon() {
 
     playerScore++;
 
-    document.getElementById("game-status-message").innerHTML = `You Win: ${playerChoice} beats ${computerChoice}!`;   
+    document.getElementById("game-status-message").innerHTML = `You Win: ${playerChoice} beats ${computerChoice}!`;
     document.getElementById("playerScore").innerHTML = playerScore;
 
 }
@@ -78,15 +80,15 @@ function playerWon() {
 Update the game-status-message with the outcome of the round */
 
 function computerWon() {
-  
+
     document.getElementById("game-status-message").innerHTML = "";
     let computerScore = document.getElementById("computerScore").innerHTML;
     let computerChoice = document.getElementById("computerChoice").innerHTML;
     let playerChoice = document.getElementById("playerChoice").innerHTML;
 
     computerScore++;
-    
-    document.getElementById("game-status-message").innerHTML = `You loose: ${computerChoice} beats ${playerChoice}!`;    
+
+    document.getElementById("game-status-message").innerHTML = `You loose: ${computerChoice} beats ${playerChoice}!`;
     document.getElementById("computerScore").innerHTML = computerScore;
 
 }
@@ -94,6 +96,8 @@ function computerWon() {
 Update the game-status-message with the outcome of the round */
 
 function gameDraw() {
+document.getElementById("game-status-message").innerHTML = "";
+document.getElementById("game-status-message").innerHTML = `Draw! Try again.`;
 
 }
 
