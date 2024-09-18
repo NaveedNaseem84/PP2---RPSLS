@@ -140,6 +140,27 @@ function checkWinner(){
     let playerScore = document.getElementById("playerScore").innerHTML;
     let computerScore = document.getElementById("computerScore").innerHTML;
 
+    /* ternary guidance taken from freecodecamp example - reference in readme.md 
+    This will (hopefully!) replace the if statements below. 
+    */
+    let checkScores =
+    playerScore > computerScore
+    ? alert("Player score Higher")
+    : computerScore > playerScore
+    ? alert("Computer score higher")
+    :alert("Draw");
+   
+    function playerScoreWinner(){
+
+    }
+
+    function computerScoreWinner(){
+
+    }
+
+    function scoreDraw(){
+        
+    }
     if(playerScore > computerScore){
         document.getElementById("computerScore").classList.remove("style-draw-text");
         document.getElementById("playerScore").classList.remove("style-draw-text");
