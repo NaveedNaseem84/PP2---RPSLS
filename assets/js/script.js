@@ -46,7 +46,7 @@ function playGame() {
     else if(computerChoice===playerChoice){
         gameDraw();
     }
-
+checkWinner();
 }
 
 /*Randomly select a choice from Rock, Paper, Scissors, Lizard or Spock
@@ -117,6 +117,12 @@ function resetGame() {
     document.getElementById("game-status-message").classList.remove("style-loosing-text");
     document.getElementById("game-status-message").classList.remove("style-winning-text");
 
+    document.getElementById("playerScore").classList.remove("style-loosing-text");
+    document.getElementById("computerScore").classList.remove("style-loosing-text");
+
+    document.getElementById("playerScore").classList.remove("style-winning-text");
+    document.getElementById("computerScore").classList.remove("style-winning-text");
+
     playerScore = 0;
     computerScore = 0;
 
@@ -127,10 +133,49 @@ function resetGame() {
     document.getElementById("playerChoice").innerHTML = "";
 
 }
+
+/* check both scores. Winner's score styled to green, draw to orange loosers to red? (check color against background!) */
+function checkWinner(){
+
+    let playerScore = document.getElementById("playerScore").innerHTML;
+    let computerScore = document.getElementById("computerScore").innerHTML;
+
+    if(playerScore > computerScore){
+        document.getElementById("computerScore").classList.remove("style-draw-text");
+        document.getElementById("playerScore").classList.remove("style-draw-text");
+
+        document.getElementById("playerScore").classList.remove("style-loosing-text");  
+        document.getElementById("playerScore").classList.add("style-winning-text"); 
+        
+        document.getElementById("computerScore").classList.remove("style-winning-text"); 
+        document.getElementById("computerScore").classList.add("style-loosing-text"); 
+    }
+
+    else if(computerScore > playerScore){
+        document.getElementById("computerScore").classList.remove("style-draw-text");
+        document.getElementById("playerScore").classList.remove("style-draw-text");
+        document.getElementById("computerScore").classList.remove("style-loosing-text");
+        document.getElementById("computerScore").classList.add("style-winning-text");  
+        document.getElementById("playerScore").classList.remove("style-winning-text"); 
+        document.getElementById("playerScore").classList.add("style-loosing-text"); 
+        
+    }
+
+    else if(playerScore === computerScore){
+        document.getElementById("computerScore").classList.remove("style-loosing-text");
+        document.getElementById("playerScore").classList.remove("style-loosing-text");
+
+        document.getElementById("computerScore").classList.remove("style-winning-text");
+        document.getElementById("playerScore").classList.remove("style-winning-text");
+
+        document.getElementById("computerScore").classList.add("style-draw-text");
+        document.getElementById("playerScore").classList.add("style-draw-text");        
+    }
+
+
+}
 /* Provide user instructions for the user*/
 function getInstructions() {
     alert("getInstructions function called");
-
-    
 
 }
