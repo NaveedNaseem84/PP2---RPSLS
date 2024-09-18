@@ -47,6 +47,7 @@ function playGame() {
         gameDraw();
     }
 checkWinner();
+triesLeft();
 }
 
 /*Randomly select a choice from Rock, Paper, Scissors, Lizard or Spock
@@ -109,13 +110,19 @@ document.getElementById("game-status-message").innerHTML = `Draw! Try again.`;
 /*set all player and computer score to 0
 update the respected elements to display this.
 Update the game-status to notify player game has been reset.
-set the player and computer choice HTML elements to "" */
+set the player and computer choice HTML elements to ""
+Remove all win/loose styling classes. 
+Pose butons re-enabled, tries left set back to 10
+*/
 
 function resetGame() {
     let playerScore = document.getElementById("playerScore").innerHTML;
     let computerScore = document.getElementById("computerScore").innerHTML;
     document.getElementById("game-status-message").classList.remove("style-loosing-text");
     document.getElementById("game-status-message").classList.remove("style-winning-text");
+
+    document.getElementById("playerScore").classList.remove("style-draw-text");
+    document.getElementById("computerScore").classList.remove("style-draw-text");
 
     document.getElementById("playerScore").classList.remove("style-loosing-text");
     document.getElementById("computerScore").classList.remove("style-loosing-text");
@@ -132,6 +139,16 @@ function resetGame() {
     document.getElementById("computerChoice").innerHTML = "";
     document.getElementById("playerChoice").innerHTML = "";
 
+    let triesLeft = document.getElementById("tries-left-count").innerHTML;
+    triesLeft = 10;
+    document.getElementById("tries-left-count").innerHTML = triesLeft;
+
+    document.getElementById("Rock").disabled = false;
+    document.getElementById("Paper").disabled = false;
+    document.getElementById("Scissors").disabled = false;
+    document.getElementById("Spock").disabled = false;
+    document.getElementById("Lizard").disabled = false;
+    
 }
 
 /* check both scores. Winner's score styled to green, draw to orange loosers to red? (check color against background!) */
@@ -143,24 +160,48 @@ function checkWinner(){
     /* ternary guidance taken from freecodecamp example - reference in readme.md 
     This will (hopefully!) replace the if statements below. 
     */
-    let checkScores =
+    
     playerScore > computerScore
-    ? alert("Player score Higher")
+    ? playerScoreWinner()
     : computerScore > playerScore
-    ? alert("Computer score higher")
-    :alert("Draw");
+    ? computerScoreWinner()
+    :scoreDraw();
    
     function playerScoreWinner(){
+      //  alert("Player score Higher")
+        document.getElementById("computerScore").classList.remove("style-draw-text");
+        document.getElementById("playerScore").classList.remove("style-draw-text");
 
+        document.getElementById("playerScore").classList.remove("style-loosing-text");  
+        document.getElementById("playerScore").classList.add("style-winning-text"); 
+        
+        document.getElementById("computerScore").classList.remove("style-winning-text"); 
+        document.getElementById("computerScore").classList.add("style-loosing-text"); 
     }
 
     function computerScoreWinner(){
-
+        //alert("Computer score higher")
+        
+        document.getElementById("computerScore").classList.remove("style-draw-text");
+        document.getElementById("playerScore").classList.remove("style-draw-text");
+        document.getElementById("computerScore").classList.remove("style-loosing-text");
+        document.getElementById("computerScore").classList.add("style-winning-text");  
+        document.getElementById("playerScore").classList.remove("style-winning-text"); 
+        document.getElementById("playerScore").classList.add("style-loosing-text"); 
     }
 
     function scoreDraw(){
-        
+        //alert("Draw")
+        document.getElementById("computerScore").classList.remove("style-loosing-text");
+        document.getElementById("playerScore").classList.remove("style-loosing-text");
+
+        document.getElementById("computerScore").classList.remove("style-winning-text");
+        document.getElementById("playerScore").classList.remove("style-winning-text");
+
+        document.getElementById("computerScore").classList.add("style-draw-text");
+        document.getElementById("playerScore").classList.add("style-draw-text");  
     }
+    /*
     if(playerScore > computerScore){
         document.getElementById("computerScore").classList.remove("style-draw-text");
         document.getElementById("playerScore").classList.remove("style-draw-text");
@@ -193,10 +234,30 @@ function checkWinner(){
         document.getElementById("playerScore").classList.add("style-draw-text");        
     }
 
+*/
+}
+
+/* function to minus the tries left. If they reach 0, disable the pose buttons till reset is called */
+/* revisit - can this be refined somehow? */
+
+function triesLeft(){
+    let triesLeft = document.getElementById("tries-left-count").innerHTML;
+    triesLeft--;
+    document.getElementById("tries-left-count").innerHTML=triesLeft;    
+      if(triesLeft===0){
+        document.getElementById("Rock").disabled = true;
+        document.getElementById("Paper").disabled = true;
+        document.getElementById("Scissors").disabled = true;
+        document.getElementById("Spock").disabled = true;
+        document.getElementById("Lizard").disabled = true;
+        document.getElementById("game-status-message").innerHTML=`Game Over. Please reset to play again`;
+
+      }
+
 
 }
 /* Provide user instructions for the user*/
 function getInstructions() {
-    alert("getInstructions function called");
+   alert("Get Instructions")
 
 }
