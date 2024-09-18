@@ -28,13 +28,13 @@
     <!--Main Body Content-->
     <main>
         <div id="game-board">
-        <section id="game-board-info" class="text-center">
-            <h1>Let the fun begin!</h1>
-            <div id="game-updates">
-                <span id="game-status-message">Choose your pose.</span>
-            </div>
-        </section>
-        
+            <section id="game-board-info" class="text-center">
+                <h1>Let the fun begin!</h1>
+                <div id="game-updates">
+                    <span id="game-status-message">Choose your pose.</span>
+                </div>
+            </section>
+
             <div id="btn-gameplay-btn-group" class="text-center">
                 <button id="Rock" class="btn-game-button"><i class="far fa-hand-rock"></i></button>
                 <button id="Paper" class="btn-game-button"><i class="fa-regular fa-note-sticky"></i></button>
@@ -43,26 +43,28 @@
                 <button id="Spock" class="btn-game-button"><i class="fa-regular fa-hand-spock"></i></button>
             </div>
             
-            <div class="text-center">
-
-                <p>Choices: </p>
-                <div>Player: <span id="playerChoice"></span></div>
-                <div>Computer: <span id="computerChoice"></span></div>
-                <p>Scores:</p>
-                <div>Player: <span id="playerScore">0</span></div>
-                <div>Computer: <span id="computerScore">0</span></div>
+            <div id="game-stats" class="text-center">
+                <div id="game-stats-choice">
+                    <p style="padding-top: 10px; margin: 0;">Player </p>
+                    <div>Choice: <span id="playerChoice"></span></div>
+                    <div>Score: <span id="playerScore">0</span></div>
+                </div>
+                <div id="text-versus">V</div>
+                <div id="game-stats-scores">
+                    <p style="padding-top: 10px; margin: 0;">Computer</p>
+                    <div>Choice: <span id="computerChoice"></span></div>
+                    <div>Score: <span id="computerScore">0</span></div>
+                </div>
             </div>
-
             <div class="text-center btn-game-controls">
-                <button id="reset" class="btn-game-button btn-game-controls"><i class="fa-solid fa-rotate-left">
-                         Restart</i></button>
+                <button id="reset" class="btn-game-button btn-game-controls"><i
+                        class="fa-solid fa-rotate-left">Restart</i></button>
                 <button id="instructions" class="btn-game-button btn-game-controls"><i class="fa-solid fa-circle-info">
-                         Rules</i></button>
+                        Rules</i></button>
             </div>
         </div>
 
     </main>
-
    
     <!--Script Imports-->
     <script src="assets/js/script.js"></script>

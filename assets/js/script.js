@@ -114,6 +114,8 @@ set the player and computer choice HTML elements to "" */
 function resetGame() {
     let playerScore = document.getElementById("playerScore").innerHTML;
     let computerScore = document.getElementById("computerScore").innerHTML;
+    document.getElementById("game-status-message").classList.remove("style-loosing-text");
+    document.getElementById("game-status-message").classList.remove("style-winning-text");
 
     playerScore = 0;
     computerScore = 0;
