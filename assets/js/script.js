@@ -65,6 +65,8 @@ Update the game-status-message with the outcome of the round */
 
 function playerWon() {
     document.getElementById("game-status-message").innerHTML = "";
+    document.getElementById("game-status-message").classList.remove("style-loosing-text");
+    document.getElementById("game-status-message").classList.add("style-winning-text");
     let playerScore = document.getElementById("playerScore").innerHTML;
     let computerChoice = document.getElementById("computerChoice").innerHTML;
     let playerChoice = document.getElementById("playerChoice").innerHTML;
@@ -82,13 +84,14 @@ Update the game-status-message with the outcome of the round */
 function computerWon() {
 
     document.getElementById("game-status-message").innerHTML = "";
+    document.getElementById("game-status-message").classList.remove("style-winning-text");
+    document.getElementById("game-status-message").classList.add("style-loosing-text");
     let computerScore = document.getElementById("computerScore").innerHTML;
     let computerChoice = document.getElementById("computerChoice").innerHTML;
     let playerChoice = document.getElementById("playerChoice").innerHTML;
 
     computerScore++;
-
-    document.getElementById("game-status-message").innerHTML = `You loose: ${computerChoice} beats ${playerChoice}!`;
+    document.getElementById("game-status-message").innerHTML = `You loose: ${computerChoice} beats ${playerChoice}!`;  
     document.getElementById("computerScore").innerHTML = computerScore;
 
 }
@@ -97,6 +100,8 @@ Update the game-status-message with the outcome of the round */
 
 function gameDraw() {
 document.getElementById("game-status-message").innerHTML = "";
+document.getElementById("game-status-message").classList.remove("style-loosing-text");
+document.getElementById("game-status-message").classList.remove("style-winning-text");
 document.getElementById("game-status-message").innerHTML = `Draw! Try again.`;
 
 }
@@ -123,5 +128,7 @@ function resetGame() {
 /* Provide user instructions for the user*/
 function getInstructions() {
     alert("getInstructions function called");
+
+    
 
 }
