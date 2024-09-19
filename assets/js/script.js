@@ -1,5 +1,19 @@
+
+const rockValue = "Rock";
+const paperValue = "Paper";
+const scissorsValue = "Scissors";
+const lizardValue = "Lizard";
+const spockValue = "Spock";
+
+let gameSelection = [rockValue, paperValue, scissorsValue, lizardValue, spockValue];
+
+let gameStatusMessageID =  document.getElementById("game-status-message");
+let playerChoice = document.getElementById("playerChoice");
+let computerChoice = document.getElementById("computerChoice");
+
 /*Event Listener for when DOM loads to listen for clicks on all the buttons
 Adapted from the Love Maths project from CI. Will be credited in readme.md*/
+
 
 document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("button");
@@ -10,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 resetGame();
             } else if (this.getAttribute("id") === "Rock" || this.getAttribute("id") === "Paper" || this.getAttribute("id") === "Scissors" || this.getAttribute("id") === "Lizard" || this.getAttribute("id") === "Spock") {
                 let inputType = this.getAttribute("id");
-                document.getElementById("playerChoice").innerHTML = inputType;
+                playerChoice.innerHTML = inputType;
                 computerRandomChoice();
                 playGame();
             }
@@ -27,25 +41,32 @@ document.addEventListener("DOMContentLoaded", function () {
 if the computer choice beats the player choice, call the computerWon() function
 If it is a draw ( both choose the same), call the gameDraw() function */
 
-function playGame() {
-    let playerChoice = document.getElementById("playerChoice").innerHTML;
-    let computerChoice = document.getElementById("computerChoice").innerHTML;
-
-    if (playerChoice === "Rock" && computerChoice === "Scissors" || (playerChoice === "Scissors" && computerChoice === "Paper") ||
-        (playerChoice === "Paper" && computerChoice === "Rock") || (playerChoice === "Rock" && computerChoice === "Lizard") || (playerChoice === "Lizard" && computerChoice === "Spock") ||
-        (playerChoice === "Spock" && computerChoice === "Scissors") || (playerChoice === "Scissors" && computerChoice === "Lizard") || (playerChoice === "Lizard" && computerChoice === "Paper") ||
-        (playerChoice === "Paper" && computerChoice === "Spock") || (playerChoice === "Spock" && computerChoice === "Rock")) {
-        playerWon();
-    } else if (computerChoice === "Rock" && playerChoice === "Scissors" || (computerChoice === "Scissors" && playerChoice === "Paper") || (computerChoice === "Paper" && playerChoice === "Rock") ||
-        (computerChoice === "Rock" && playerChoice === "Lizard") || (computerChoice === "Lizard" && playerChoice === "Spock") ||
-        (computerChoice === "Spock" && playerChoice === "Scissors") || (computerChoice === "Scissors" && playerChoice === "Lizard") || (computerChoice === "Lizard" && playerChoice === "Paper") ||
-        (computerChoice === "Paper" && playerChoice === "Spock") || (computerChoice === "Spock" && playerChoice === "Rock")) {
-        computerWon();
-
-    }
-    else if(computerChoice===playerChoice){
+function playGame(playerChoiceValue, computerChoiceValue) {
+   //playerChoice = document.getElementById("playerChoice").innerHTML;
+   playerChoiceValue = playerChoice.innerHTML;
+      // playerChoice = playerChoice.innerHTML;
+    //let computerChoice = document.getElementById("computerChoice").innerHTML;
+    computerChoiceValue = computerChoice.innerHTML;
+    if (computerChoiceValue === playerChoiceValue) {
         gameDraw();
+       //alert("Its a draw")
+    } else if (playerChoiceValue === rockValue && computerChoiceValue === scissorsValue ||
+         (playerChoiceValue === scissorsValue && computerChoiceValue === paperValue) ||
+        (playerChoiceValue === paperValue && computerChoiceValue === rockValue) || 
+        (playerChoiceValue === rockValue && computerChoiceValue === lizardValue) || 
+        (playerChoiceValue === lizardValue && computerChoiceValue === spockValue) ||
+        (playerChoiceValue === spockValue && computerChoiceValue === scissorsValue) || 
+        (playerChoiceValue === scissorsValue && computerChoiceValue === lizardValue) || 
+        (playerChoiceValue === lizardValue && computerChoiceValue === paperValue) ||
+        (playerChoiceValue === paperValue && computerChoiceValue === spockValue) || 
+        (playerChoiceValue === spockValue && computerChoiceValue === rockValue)) {
+        playerWon();
+        //alert("player Won")
+    } else {
+    computerWon();
+       // alert("Computer Won")
     }
+    
 checkWinner();
 triesLeft();
 }
@@ -55,27 +76,36 @@ Once selected, assign to a variable for the game.
 Update the computerChoice element on HTML form - only when the game has started! */
 
 function computerRandomChoice() {
-
-    let gameSelection = ['Rock', 'Paper', 'Scissors', 'Lizard', 'Spock'];
-    let computerChoice = gameSelection[(Math.floor(Math.random() * gameSelection.length))];
-    document.getElementById("computerChoice").innerHTML = computerChoice;
+   
+    //let computerChoice = gameSelection[(Math.floor(Math.random() * gameSelection.length))];
+    //document.getElementById("computerChoice").innerHTML = computerChoice;
+    computerChoice.innerHTML =  gameSelection[(Math.floor(Math.random() * gameSelection.length))];
 }
 
 /*Increment the player score by 1 and update the playerScore element.
 Update the game-status-message with the outcome of the round */
 
 function playerWon() {
-    document.getElementById("game-status-message").innerHTML = "";
-    document.getElementById("game-status-message").classList.remove("style-loosing-text");
-    document.getElementById("game-status-message").classList.add("style-winning-text");
+    gameStatusMessageID.innerHTML = "";
+    gameStatusMessageID.classList.remove("style-loosing-text");
+    gameStatusMessageID.classList.add("style-winning-text");
+    //alert(playerChoiceValue.innerHTML);
+
+
     let playerScore = document.getElementById("playerScore").innerHTML;
-    let computerChoice = document.getElementById("computerChoice").innerHTML;
-    let playerChoice = document.getElementById("playerChoice").innerHTML;
+   // let computerChoice = document.getElementById("computerChoice").innerHTML;
+    //let playerChoice = document.getElementById("playerChoice").innerHTML;
 
-    playerScore++;
+   // playerChoiceValue = playerChoice.innerHTML;
+      // playerChoice = playerChoice.innerHTML;
+    //let computerChoice = document.getElementById("computerChoice").innerHTML;
+    //computerChoiceValue = computerChoice.innerHTML;
 
-    document.getElementById("game-status-message").innerHTML = `You Win: ${playerChoice} beats ${computerChoice}!`;
-    document.getElementById("playerScore").innerHTML = playerScore;
+    //playerScore++;
+
+   // gameStatusMessageID.innerHTML = `You Win: ${playerChoiceValue.innerHTML} beats ${computerChoiceValue}!`;
+    gameStatusMessageID.innerHTML = "You Win: "+ playerChoice.innerHTML + " beats "+computerChoice.innerHTML;
+    document.getElementById("playerScore").innerHTML = ++playerScore;
 
 }
 
@@ -84,26 +114,29 @@ Update the game-status-message with the outcome of the round */
 
 function computerWon() {
 
-    document.getElementById("game-status-message").innerHTML = "";
-    document.getElementById("game-status-message").classList.remove("style-winning-text");
-    document.getElementById("game-status-message").classList.add("style-loosing-text");
+    gameStatusMessageID.innerHTML = "";
+    gameStatusMessageID.classList.remove("style-winning-text");
+    gameStatusMessageID.classList.add("style-loosing-text");
     let computerScore = document.getElementById("computerScore").innerHTML;
-    let computerChoice = document.getElementById("computerChoice").innerHTML;
-    let playerChoice = document.getElementById("playerChoice").innerHTML;
 
-    computerScore++;
-    document.getElementById("game-status-message").innerHTML = `You lose: ${computerChoice} beats ${playerChoice}!`;  
-    document.getElementById("computerScore").innerHTML = computerScore;
+    gameStatusMessageID.innerHTML = "You Lose: "+ computerChoice.innerHTML + " beats "+playerChoice.innerHTML;
+    document.getElementById("computerScore").innerHTML = ++computerScore;
+    //let computerChoice = document.getElementById("computerChoice").innerHTML;
+    //let playerChoice = document.getElementById("playerChoice").innerHTML;
+
+    //computerScore++;
+    //gameStatusMessageID.innerHTML = `You lose: ${computerChoice} beats ${playerChoice}!`;  
+    //document.getElementById("computerScore").innerHTML = computerScore;
 
 }
 /*If player and Computer choose the same option, 
 Update the game-status-message with the outcome of the round */
 
 function gameDraw() {
-document.getElementById("game-status-message").innerHTML = "";
-document.getElementById("game-status-message").classList.remove("style-loosing-text");
-document.getElementById("game-status-message").classList.remove("style-winning-text");
-document.getElementById("game-status-message").innerHTML = `Draw! Try again.`;
+    gameStatusMessageID.innerHTML = "";
+    gameStatusMessageID.classList.remove("style-loosing-text","style-winning-text" );
+    //gameStatusMessageID.classList.remove();
+    gameStatusMessageID.innerHTML = `Draw! Try again.`;
 
 }
 
@@ -118,9 +151,9 @@ Pose butons re-enabled, tries left set back to 10
 function resetGame() {
     let playerScore = document.getElementById("playerScore").innerHTML;
     let computerScore = document.getElementById("computerScore").innerHTML;
-    document.getElementById("game-status-message").classList.remove("style-loosing-text");
-    document.getElementById("game-status-message").classList.remove("style-winning-text");
-    document.getElementById("game-status-message").classList.remove("style-draw-text");
+    gameStatusMessageID.classList.remove("style-loosing-text");
+    gameStatusMessageID.classList.remove("style-winning-text");
+    gameStatusMessageID.classList.remove("style-draw-text");
 
     document.getElementById("playerScore").classList.remove("style-draw-text");
     document.getElementById("computerScore").classList.remove("style-draw-text");
@@ -247,23 +280,23 @@ function triesLeft(){
       
 
         if(playerScore >computerScore){
-            document.getElementById("game-status-message").classList.remove("style-loosing-text");
-            document.getElementById("game-status-message").classList.remove("style-draw-text");
-            document.getElementById("game-status-message").classList.add("style-winning-text");            
-            document.getElementById("game-status-message").innerHTML=`Game Over. You Won!`;
+            gameStatusMessageID.classList.remove("style-loosing-text");
+            gameStatusMessageID.classList.remove("style-draw-text");
+            gameStatusMessageID.classList.add("style-winning-text");            
+            gameStatusMessageID.innerHTML=`Game Over. You Won!`;
         }
         else if( computerScore > playerScore){
-            document.getElementById("game-status-message").classList.remove("style-winning-text");
-            document.getElementById("game-status-message").classList.remove("style-draw-text");
-            document.getElementById("game-status-message").classList.add("style-loosing-text");
-            document.getElementById("game-status-message").innerHTML=`Game Over. You Lost!`;
+            gameStatusMessageID.classList.remove("style-winning-text");
+            gameStatusMessageID.classList.remove("style-draw-text");
+            gameStatusMessageID.classList.add("style-loosing-text");
+            gameStatusMessageID.innerHTML=`Game Over. You Lost!`;
             
         }
         else if(computerScore === playerScore) {
-            document.getElementById("game-status-message").classList.remove("style-loosing-text");
-            document.getElementById("game-status-message").classList.remove("style-winning-text");
-            document.getElementById("game-status-message").classList.add("style-draw-text");
-            document.getElementById("game-status-message").innerHTML=`It's a Draw!`;
+            gameStatusMessageID.classList.remove("style-loosing-text");
+            gameStatusMessageID.classList.remove("style-winning-text");
+            gameStatusMessageID.classList.add("style-draw-text");
+            gameStatusMessageID.innerHTML=`It's a Draw!`;
         }
        
 
