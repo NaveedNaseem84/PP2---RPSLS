@@ -1,4 +1,3 @@
-
 const rockValue = "Rock";
 const paperValue = "Paper";
 const scissorsValue = "Scissors";
@@ -10,9 +9,9 @@ let playerScore = 0;
 let triesLeft = 10;
 
 let gameSelection = [rockValue, paperValue, scissorsValue, lizardValue, spockValue];
-const styleGameStatusText = ["style-draw-text","style-loosing-text", "style-winning-text"];
+const styleGameStatusText = ["style-draw-text", "style-loosing-text", "style-winning-text"];
 
-const gameStatusMessageID =  document.getElementById("game-status-message");
+const gameStatusMessageID = document.getElementById("game-status-message");
 const playerChoice = document.getElementById("playerChoice");
 const computerChoice = document.getElementById("computerChoice");
 const computerScoreID = document.getElementById("computerScore");
@@ -51,7 +50,7 @@ If it is a draw ( both choose the same), call the gameDraw() function */
 function playGame(playerChoiceValue, computerChoiceValue) {
     playerChoiceValue = playerChoice.innerHTML;
     computerChoiceValue = computerChoice.innerHTML;
-    
+
     if (computerChoiceValue === playerChoiceValue) {
         gameDraw();
 
@@ -89,7 +88,7 @@ function playerWon() {
     gameStatusMessageID.innerHTML = "";
     gameStatusMessageID.classList.remove("style-loosing-text");
     gameStatusMessageID.classList.add("style-winning-text");
-    gameStatusMessageID.innerHTML = "You Win: "+ playerChoice.innerHTML + " beats "+computerChoice.innerHTML;
+    gameStatusMessageID.innerHTML = "You Win: " + playerChoice.innerHTML + " beats " + computerChoice.innerHTML;
     playerScoreID.innerHTML = ++playerScore;
 
 }
@@ -102,18 +101,17 @@ function computerWon() {
     gameStatusMessageID.innerHTML = "";
     gameStatusMessageID.classList.remove("style-winning-text");
     gameStatusMessageID.classList.add("style-loosing-text");
-    gameStatusMessageID.innerHTML = "You Lose: "+ computerChoice.innerHTML + " beats "+playerChoice.innerHTML;
+    gameStatusMessageID.innerHTML = "You Lose: " + computerChoice.innerHTML + " beats " + playerChoice.innerHTML;
     computerScoreID.innerHTML = ++computerScore;
-   
+
 }
 /*If player and Computer choose the same option, 
 Update the game-status-message with the outcome of the round */
 
 function gameDraw() {
     gameStatusMessageID.innerHTML = "";
-    gameStatusMessageID.classList.remove("style-loosing-text","style-winning-text" );
-    gameStatusMessageID.innerHTML = `Draw! Try again.`;
-
+    gameStatusMessageID.classList.remove(...styleGameStatusText);
+    gameStatusMessageID.innerHTML = "Draw! Try again.";
 }
 
 /*set all player and computer score to 0
@@ -125,137 +123,65 @@ Pose butons re-enabled, tries left set back to 10
 */
 
 function resetGame() {
-   
     playerScore = 0;
     computerScore = 0;
     triesLeft = 10;
     gameStatusMessageID.classList.remove(...styleGameStatusText);
     playerScoreID.classList.remove(...styleGameStatusText);
-    computerScoreID.classList.remove(...styleGameStatusText);    
-
-    gameStatusMessageID.innerHTML = `Game reset. Choose your pose.`;
+    computerScoreID.classList.remove(...styleGameStatusText);
+    gameStatusMessageID.innerHTML = "Game reset. Choose your pose.";
     playerScoreID.innerHTML = playerScore;
     computerScoreID.innerHTML = computerScore;
     computerChoice.innerHTML = "";
     playerChoice.innerHTML = "";
-    
     document.getElementById("tries-left-count").innerHTML = triesLeft;
-   document.getElementById("btn-gameplay-btn-group").style.display = "block";
-    
+    document.getElementById("btn-gameplay-btn-group").style.display = "block";
 }
 
 /* check both scores. Winner's score styled to green, draw to orange loosers to red? (check color against background!) */
-function checkWinner(){
-
-    /* ternary guidance taken from freecodecamp example - reference in readme.md 
-    This will (hopefully!) replace the if statements below. 
-    */
-    
-    playerScore > computerScore
-    ? playerScoreWinner()
-    : computerScore > playerScore
-    ? computerScoreWinner()
-    :scoreDraw();
-   
-    function playerScoreWinner(){
-      //  alert("Player score Higher")
-        document.getElementById("computerScore").classList.remove("style-draw-text");
-        document.getElementById("playerScore").classList.remove("style-draw-text");
-
-        document.getElementById("playerScore").classList.remove("style-loosing-text");  
-        document.getElementById("playerScore").classList.add("style-winning-text"); 
-        
-        document.getElementById("computerScore").classList.remove("style-winning-text"); 
-        document.getElementById("computerScore").classList.add("style-loosing-text"); 
+function checkWinner() {
+    if (playerScore > computerScore) {
+        computerScoreID.classList.remove(...styleGameStatusText);
+        playerScoreID.classList.remove(...styleGameStatusText);
+        playerScoreID.classList.add("style-winning-text");
+        computerScoreID.classList.add("style-loosing-text");
+    } else if (computerScore > playerScore) {
+        computerScoreID.classList.remove(...styleGameStatusText);
+        playerScoreID.classList.remove(...styleGameStatusText);
+        computerScoreID.classList.add("style-winning-text");
+        playerScoreID.classList.add("style-loosing-text");
+    } else {
+        computerScoreID.classList.remove(...styleGameStatusText);
+        playerScoreID.classList.remove(...styleGameStatusText);
+        computerScoreID.classList.add("style-draw-text");
+        playerScoreID.classList.add("style-draw-text");
     }
-
-    function computerScoreWinner(){
-        //alert("Computer score higher")
-        
-        document.getElementById("computerScore").classList.remove("style-draw-text");
-        document.getElementById("playerScore").classList.remove("style-draw-text");
-        document.getElementById("computerScore").classList.remove("style-loosing-text");
-        document.getElementById("computerScore").classList.add("style-winning-text");  
-        document.getElementById("playerScore").classList.remove("style-winning-text"); 
-        document.getElementById("playerScore").classList.add("style-loosing-text"); 
-    }
-
-    function scoreDraw(){
-        //alert("Draw")
-        document.getElementById("computerScore").classList.remove("style-loosing-text");
-        document.getElementById("playerScore").classList.remove("style-loosing-text");
-
-        document.getElementById("computerScore").classList.remove("style-winning-text");
-        document.getElementById("playerScore").classList.remove("style-winning-text");
-
-        document.getElementById("computerScore").classList.add("style-draw-text");
-        document.getElementById("playerScore").classList.add("style-draw-text");  
-    }
-    /*
-    if(playerScore > computerScore){
-        document.getElementById("computerScore").classList.remove("style-draw-text");
-        document.getElementById("playerScore").classList.remove("style-draw-text");
-
-        document.getElementById("playerScore").classList.remove("style-loosing-text");  
-        document.getElementById("playerScore").classList.add("style-winning-text"); 
-        
-        document.getElementById("computerScore").classList.remove("style-winning-text"); 
-        document.getElementById("computerScore").classList.add("style-loosing-text"); 
-    }
-
-    else if(computerScore > playerScore){
-        document.getElementById("computerScore").classList.remove("style-draw-text");
-        document.getElementById("playerScore").classList.remove("style-draw-text");
-        document.getElementById("computerScore").classList.remove("style-loosing-text");
-        document.getElementById("computerScore").classList.add("style-winning-text");  
-        document.getElementById("playerScore").classList.remove("style-winning-text"); 
-        document.getElementById("playerScore").classList.add("style-loosing-text"); 
-        
-    }
-
-    else if(playerScore === computerScore){
-        document.getElementById("computerScore").classList.remove("style-loosing-text");
-        document.getElementById("playerScore").classList.remove("style-loosing-text");
-
-        document.getElementById("computerScore").classList.remove("style-winning-text");
-        document.getElementById("playerScore").classList.remove("style-winning-text");
-
-        document.getElementById("computerScore").classList.add("style-draw-text");
-        document.getElementById("playerScore").classList.add("style-draw-text");        
-    }
-
-*/
 }
 
 /* function to minus the tries left. If they reach 0, disable the pose buttons till reset is called */
 /* revisit - can this be refined somehow? */
 
-function countTriesLeft(){
-  
+function countTriesLeft() {
     triesLeft--;
-    document.getElementById("tries-left-count").innerHTML=triesLeft;    
-      if(triesLeft===0){
-       document.getElementById("btn-gameplay-btn-group").style.display = "none";
-      
-
-        if(playerScore >computerScore){
-            gameStatusMessageID.classList.remove(...styleGameStatusText);          
-            gameStatusMessageID.classList.add("style-winning-text");            
-            gameStatusMessageID.innerHTML=`Game Over. You Won!`;
-        }
-        else if( computerScore > playerScore){
-            gameStatusMessageID.classList.remove(...styleGameStatusText);            
+    document.getElementById("tries-left-count").innerHTML = triesLeft;
+    if (triesLeft === 0) {
+        document.getElementById("btn-gameplay-btn-group").style.display = "none";
+        if (playerScore > computerScore) {
+            gameStatusMessageID.classList.remove(...styleGameStatusText);
+            gameStatusMessageID.classList.add("style-winning-text");
+            gameStatusMessageID.innerHTML = "Game Over. You Won!";
+        } else if (computerScore > playerScore) {
+            gameStatusMessageID.classList.remove(...styleGameStatusText);
             gameStatusMessageID.classList.add("style-loosing-text");
-            gameStatusMessageID.innerHTML=`Game Over. You Lost!`;
-            
-        }
-        else if(computerScore === playerScore) {
-            gameStatusMessageID.classList.remove(...styleGameStatusText);            
-            gameStatusMessageID.classList.add("style-draw-text");
-            gameStatusMessageID.innerHTML=`It's a Draw!`;
-        }      
+            gameStatusMessageID.innerHTML = "Game Over. You Lost!";
 
-      }
+        } else if (computerScore === playerScore) {
+            gameStatusMessageID.classList.remove(...styleGameStatusText);
+            gameStatusMessageID.classList.add("style-draw-text");
+            gameStatusMessageID.innerHTML = "It's a Draw!";
+        }
+
+    }
 }
 /* Provide user instructions for the user*/
 function getInstructions() {
@@ -272,12 +198,11 @@ function getInstructions() {
         <p>Paper beats Spock</p>
         <p>Spock beats Rock</p>
         <p>Rock beats Scissors</p>     
-          `
+          `;
 
-          if(instructionsDiv.style.display==="block"){
-            instructionsDiv.style.display ="none";
-          }
-          else {
-            instructionsDiv.style.display = "block";
-          }
+    if (instructionsDiv.style.display === "block") {
+        instructionsDiv.style.display = "none";
+    } else {
+        instructionsDiv.style.display = "block";
+    }
 }
