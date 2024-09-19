@@ -92,7 +92,7 @@ function computerWon() {
     let playerChoice = document.getElementById("playerChoice").innerHTML;
 
     computerScore++;
-    document.getElementById("game-status-message").innerHTML = `You loose: ${computerChoice} beats ${playerChoice}!`;  
+    document.getElementById("game-status-message").innerHTML = `You lose: ${computerChoice} beats ${playerChoice}!`;  
     document.getElementById("computerScore").innerHTML = computerScore;
 
 }
@@ -120,6 +120,7 @@ function resetGame() {
     let computerScore = document.getElementById("computerScore").innerHTML;
     document.getElementById("game-status-message").classList.remove("style-loosing-text");
     document.getElementById("game-status-message").classList.remove("style-winning-text");
+    document.getElementById("game-status-message").classList.remove("style-draw-text");
 
     document.getElementById("playerScore").classList.remove("style-draw-text");
     document.getElementById("computerScore").classList.remove("style-draw-text");
@@ -142,12 +143,7 @@ function resetGame() {
     let triesLeft = document.getElementById("tries-left-count").innerHTML;
     triesLeft = 10;
     document.getElementById("tries-left-count").innerHTML = triesLeft;
-
-    document.getElementById("Rock").disabled = false;
-    document.getElementById("Paper").disabled = false;
-    document.getElementById("Scissors").disabled = false;
-    document.getElementById("Spock").disabled = false;
-    document.getElementById("Lizard").disabled = false;
+   document.getElementById("btn-gameplay-btn-group").style.display = "block";
     
 }
 
@@ -242,15 +238,34 @@ function checkWinner(){
 
 function triesLeft(){
     let triesLeft = document.getElementById("tries-left-count").innerHTML;
+    let playerScore = document.getElementById("playerScore").innerHTML;
+    let computerScore = document.getElementById("computerScore").innerHTML;    
     triesLeft--;
     document.getElementById("tries-left-count").innerHTML=triesLeft;    
       if(triesLeft===0){
-        document.getElementById("Rock").disabled = true;
-        document.getElementById("Paper").disabled = true;
-        document.getElementById("Scissors").disabled = true;
-        document.getElementById("Spock").disabled = true;
-        document.getElementById("Lizard").disabled = true;
-        document.getElementById("game-status-message").innerHTML=`Game Over. Please reset to play again`;
+       document.getElementById("btn-gameplay-btn-group").style.display = "none";
+      
+
+        if(playerScore >computerScore){
+            document.getElementById("game-status-message").classList.remove("style-loosing-text");
+            document.getElementById("game-status-message").classList.remove("style-draw-text");
+            document.getElementById("game-status-message").classList.add("style-winning-text");            
+            document.getElementById("game-status-message").innerHTML=`Game Over. You Won!`;
+        }
+        else if( computerScore > playerScore){
+            document.getElementById("game-status-message").classList.remove("style-winning-text");
+            document.getElementById("game-status-message").classList.remove("style-draw-text");
+            document.getElementById("game-status-message").classList.add("style-loosing-text");
+            document.getElementById("game-status-message").innerHTML=`Game Over. You Lost!`;
+            
+        }
+        else if(computerScore === playerScore) {
+            document.getElementById("game-status-message").classList.remove("style-loosing-text");
+            document.getElementById("game-status-message").classList.remove("style-winning-text");
+            document.getElementById("game-status-message").classList.add("style-draw-text");
+            document.getElementById("game-status-message").innerHTML=`It's a Draw!`;
+        }
+       
 
       }
 
@@ -258,6 +273,25 @@ function triesLeft(){
 }
 /* Provide user instructions for the user*/
 function getInstructions() {
-   alert("Get Instructions")
+    let instructionsDiv = document.getElementById('Instructions');
+    instructionsDiv.style.textAlign = "center";
+    instructionsDiv.innerHTML =
+        `<p>Scissors beats Paper </p>
+        <p>Paper beats Rock</p>
+        <p>Rock beats Lizard</p>
+        <p>Lizard beats Spock </p>
+        <p>Spock beats Scissors</p>
+        <p>Scissors beats Lizard</p>
+        <p>Lizard beats Paper </p>
+        <p>Paper beats Spock</p>
+        <p>Spock beats Rock</p>
+        <p>Rock beats Scissors</p>     
+          `
 
+          if(instructionsDiv.style.display==="block"){
+            instructionsDiv.style.display ="none";
+          }
+          else {
+            instructionsDiv.style.display = "block";
+          }
 }

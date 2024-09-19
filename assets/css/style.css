@@ -48,7 +48,7 @@ i {
 }
 
 i:hover {
-    border: 2px solid red;
+    border: 2px solid lightgreen;
 }
 
 #playerScore,
@@ -155,7 +155,7 @@ footer {
     main {
         background-color: #021526;
         font-size: 170%;
-        margin-top: 5%;
+        margin-top: 3%;
         height: 50vh;
     }
 
