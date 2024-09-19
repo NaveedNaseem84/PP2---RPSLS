@@ -5,11 +5,18 @@ const scissorsValue = "Scissors";
 const lizardValue = "Lizard";
 const spockValue = "Spock";
 
-let gameSelection = [rockValue, paperValue, scissorsValue, lizardValue, spockValue];
+let computerScore = 0;
+let playerScore = 0;
+let triesLeft = 10;
 
-let gameStatusMessageID =  document.getElementById("game-status-message");
-let playerChoice = document.getElementById("playerChoice");
-let computerChoice = document.getElementById("computerChoice");
+let gameSelection = [rockValue, paperValue, scissorsValue, lizardValue, spockValue];
+const styleGameStatusText = ["style-draw-text","style-loosing-text", "style-winning-text"];
+
+const gameStatusMessageID =  document.getElementById("game-status-message");
+const playerChoice = document.getElementById("playerChoice");
+const computerChoice = document.getElementById("computerChoice");
+const computerScoreID = document.getElementById("computerScore");
+const playerScoreID = document.getElementById("playerScore");
 
 /*Event Listener for when DOM loads to listen for clicks on all the buttons
 Adapted from the Love Maths project from CI. Will be credited in readme.md*/
@@ -42,33 +49,29 @@ if the computer choice beats the player choice, call the computerWon() function
 If it is a draw ( both choose the same), call the gameDraw() function */
 
 function playGame(playerChoiceValue, computerChoiceValue) {
-   //playerChoice = document.getElementById("playerChoice").innerHTML;
-   playerChoiceValue = playerChoice.innerHTML;
-      // playerChoice = playerChoice.innerHTML;
-    //let computerChoice = document.getElementById("computerChoice").innerHTML;
+    playerChoiceValue = playerChoice.innerHTML;
     computerChoiceValue = computerChoice.innerHTML;
+    
     if (computerChoiceValue === playerChoiceValue) {
         gameDraw();
-       //alert("Its a draw")
+
     } else if (playerChoiceValue === rockValue && computerChoiceValue === scissorsValue ||
-         (playerChoiceValue === scissorsValue && computerChoiceValue === paperValue) ||
-        (playerChoiceValue === paperValue && computerChoiceValue === rockValue) || 
-        (playerChoiceValue === rockValue && computerChoiceValue === lizardValue) || 
+        (playerChoiceValue === scissorsValue && computerChoiceValue === paperValue) ||
+        (playerChoiceValue === paperValue && computerChoiceValue === rockValue) ||
+        (playerChoiceValue === rockValue && computerChoiceValue === lizardValue) ||
         (playerChoiceValue === lizardValue && computerChoiceValue === spockValue) ||
-        (playerChoiceValue === spockValue && computerChoiceValue === scissorsValue) || 
-        (playerChoiceValue === scissorsValue && computerChoiceValue === lizardValue) || 
+        (playerChoiceValue === spockValue && computerChoiceValue === scissorsValue) ||
+        (playerChoiceValue === scissorsValue && computerChoiceValue === lizardValue) ||
         (playerChoiceValue === lizardValue && computerChoiceValue === paperValue) ||
-        (playerChoiceValue === paperValue && computerChoiceValue === spockValue) || 
+        (playerChoiceValue === paperValue && computerChoiceValue === spockValue) ||
         (playerChoiceValue === spockValue && computerChoiceValue === rockValue)) {
         playerWon();
-        //alert("player Won")
+
     } else {
-    computerWon();
-       // alert("Computer Won")
+        computerWon();
     }
-    
-checkWinner();
-triesLeft();
+    checkWinner();
+    countTriesLeft();
 }
 
 /*Randomly select a choice from Rock, Paper, Scissors, Lizard or Spock
@@ -76,10 +79,7 @@ Once selected, assign to a variable for the game.
 Update the computerChoice element on HTML form - only when the game has started! */
 
 function computerRandomChoice() {
-   
-    //let computerChoice = gameSelection[(Math.floor(Math.random() * gameSelection.length))];
-    //document.getElementById("computerChoice").innerHTML = computerChoice;
-    computerChoice.innerHTML =  gameSelection[(Math.floor(Math.random() * gameSelection.length))];
+    computerChoice.innerHTML = gameSelection[(Math.floor(Math.random() * gameSelection.length))];
 }
 
 /*Increment the player score by 1 and update the playerScore element.
@@ -89,23 +89,8 @@ function playerWon() {
     gameStatusMessageID.innerHTML = "";
     gameStatusMessageID.classList.remove("style-loosing-text");
     gameStatusMessageID.classList.add("style-winning-text");
-    //alert(playerChoiceValue.innerHTML);
-
-
-    let playerScore = document.getElementById("playerScore").innerHTML;
-   // let computerChoice = document.getElementById("computerChoice").innerHTML;
-    //let playerChoice = document.getElementById("playerChoice").innerHTML;
-
-   // playerChoiceValue = playerChoice.innerHTML;
-      // playerChoice = playerChoice.innerHTML;
-    //let computerChoice = document.getElementById("computerChoice").innerHTML;
-    //computerChoiceValue = computerChoice.innerHTML;
-
-    //playerScore++;
-
-   // gameStatusMessageID.innerHTML = `You Win: ${playerChoiceValue.innerHTML} beats ${computerChoiceValue}!`;
     gameStatusMessageID.innerHTML = "You Win: "+ playerChoice.innerHTML + " beats "+computerChoice.innerHTML;
-    document.getElementById("playerScore").innerHTML = ++playerScore;
+    playerScoreID.innerHTML = ++playerScore;
 
 }
 
@@ -117,17 +102,9 @@ function computerWon() {
     gameStatusMessageID.innerHTML = "";
     gameStatusMessageID.classList.remove("style-winning-text");
     gameStatusMessageID.classList.add("style-loosing-text");
-    let computerScore = document.getElementById("computerScore").innerHTML;
-
     gameStatusMessageID.innerHTML = "You Lose: "+ computerChoice.innerHTML + " beats "+playerChoice.innerHTML;
-    document.getElementById("computerScore").innerHTML = ++computerScore;
-    //let computerChoice = document.getElementById("computerChoice").innerHTML;
-    //let playerChoice = document.getElementById("playerChoice").innerHTML;
-
-    //computerScore++;
-    //gameStatusMessageID.innerHTML = `You lose: ${computerChoice} beats ${playerChoice}!`;  
-    //document.getElementById("computerScore").innerHTML = computerScore;
-
+    computerScoreID.innerHTML = ++computerScore;
+   
 }
 /*If player and Computer choose the same option, 
 Update the game-status-message with the outcome of the round */
@@ -135,7 +112,6 @@ Update the game-status-message with the outcome of the round */
 function gameDraw() {
     gameStatusMessageID.innerHTML = "";
     gameStatusMessageID.classList.remove("style-loosing-text","style-winning-text" );
-    //gameStatusMessageID.classList.remove();
     gameStatusMessageID.innerHTML = `Draw! Try again.`;
 
 }
@@ -149,32 +125,20 @@ Pose butons re-enabled, tries left set back to 10
 */
 
 function resetGame() {
-    let playerScore = document.getElementById("playerScore").innerHTML;
-    let computerScore = document.getElementById("computerScore").innerHTML;
-    gameStatusMessageID.classList.remove("style-loosing-text");
-    gameStatusMessageID.classList.remove("style-winning-text");
-    gameStatusMessageID.classList.remove("style-draw-text");
-
-    document.getElementById("playerScore").classList.remove("style-draw-text");
-    document.getElementById("computerScore").classList.remove("style-draw-text");
-
-    document.getElementById("playerScore").classList.remove("style-loosing-text");
-    document.getElementById("computerScore").classList.remove("style-loosing-text");
-
-    document.getElementById("playerScore").classList.remove("style-winning-text");
-    document.getElementById("computerScore").classList.remove("style-winning-text");
-
+   
     playerScore = 0;
     computerScore = 0;
-
-    document.getElementById("game-status-message").innerHTML = `Game reset. Choose your pose.`;
-    document.getElementById("playerScore").innerHTML = playerScore;
-    document.getElementById("computerScore").innerHTML = computerScore;
-    document.getElementById("computerChoice").innerHTML = "";
-    document.getElementById("playerChoice").innerHTML = "";
-
-    let triesLeft = document.getElementById("tries-left-count").innerHTML;
     triesLeft = 10;
+    gameStatusMessageID.classList.remove(...styleGameStatusText);
+    playerScoreID.classList.remove(...styleGameStatusText);
+    computerScoreID.classList.remove(...styleGameStatusText);    
+
+    gameStatusMessageID.innerHTML = `Game reset. Choose your pose.`;
+    playerScoreID.innerHTML = playerScore;
+    computerScoreID.innerHTML = computerScore;
+    computerChoice.innerHTML = "";
+    playerChoice.innerHTML = "";
+    
     document.getElementById("tries-left-count").innerHTML = triesLeft;
    document.getElementById("btn-gameplay-btn-group").style.display = "block";
     
@@ -182,9 +146,6 @@ function resetGame() {
 
 /* check both scores. Winner's score styled to green, draw to orange loosers to red? (check color against background!) */
 function checkWinner(){
-
-    let playerScore = document.getElementById("playerScore").innerHTML;
-    let computerScore = document.getElementById("computerScore").innerHTML;
 
     /* ternary guidance taken from freecodecamp example - reference in readme.md 
     This will (hopefully!) replace the if statements below. 
@@ -269,10 +230,8 @@ function checkWinner(){
 /* function to minus the tries left. If they reach 0, disable the pose buttons till reset is called */
 /* revisit - can this be refined somehow? */
 
-function triesLeft(){
-    let triesLeft = document.getElementById("tries-left-count").innerHTML;
-    let playerScore = document.getElementById("playerScore").innerHTML;
-    let computerScore = document.getElementById("computerScore").innerHTML;    
+function countTriesLeft(){
+  
     triesLeft--;
     document.getElementById("tries-left-count").innerHTML=triesLeft;    
       if(triesLeft===0){
@@ -280,29 +239,23 @@ function triesLeft(){
       
 
         if(playerScore >computerScore){
-            gameStatusMessageID.classList.remove("style-loosing-text");
-            gameStatusMessageID.classList.remove("style-draw-text");
+            gameStatusMessageID.classList.remove(...styleGameStatusText);          
             gameStatusMessageID.classList.add("style-winning-text");            
             gameStatusMessageID.innerHTML=`Game Over. You Won!`;
         }
         else if( computerScore > playerScore){
-            gameStatusMessageID.classList.remove("style-winning-text");
-            gameStatusMessageID.classList.remove("style-draw-text");
+            gameStatusMessageID.classList.remove(...styleGameStatusText);            
             gameStatusMessageID.classList.add("style-loosing-text");
             gameStatusMessageID.innerHTML=`Game Over. You Lost!`;
             
         }
         else if(computerScore === playerScore) {
-            gameStatusMessageID.classList.remove("style-loosing-text");
-            gameStatusMessageID.classList.remove("style-winning-text");
+            gameStatusMessageID.classList.remove(...styleGameStatusText);            
             gameStatusMessageID.classList.add("style-draw-text");
             gameStatusMessageID.innerHTML=`It's a Draw!`;
-        }
-       
+        }      
 
       }
-
-
 }
 /* Provide user instructions for the user*/
 function getInstructions() {
