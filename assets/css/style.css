@@ -29,6 +29,10 @@ body {
 .text-center {
     text-align: center;
 }
+.players-text{
+    padding-top: 10px;
+     margin: 0;
+}
 
 .btn-game-button {
     border: none;

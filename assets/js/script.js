@@ -18,7 +18,7 @@ const winningCombinations = {
     [scissorsValue]: [paperValue, lizardValue],
     [lizardValue]: [spockValue, paperValue],
     [spockValue]: [scissorsValue, rockValue]      
-}
+};
 
 const gameStatusMessageID = document.getElementById("game-status-message");
 const playerChoice = document.getElementById("playerChoice");
@@ -196,7 +196,6 @@ function resetGame() {
 
 /* check both scores. Winner's score styled to green, draw to orange loosers to red? (check color against background!) */
 function checkWinner() {   
-
     computerScoreID.classList.remove("style-loosing-text",
         "style-draw-text",
         "style-winning-text");
@@ -222,7 +221,6 @@ function checkWinner() {
 /* revisit - can this be refined somehow? */
 
 function countTriesLeft() {
-
     triesLeft--;
     document.getElementById("tries-left-count").innerHTML = triesLeft;
 
@@ -230,6 +228,7 @@ function countTriesLeft() {
         gameStatusMessageID.classList.remove("style-loosing-text",
             "style-draw-text",
             "style-winning-text");
+
             poseBtns.classList.remove("btn-show-pose-btns");
             poseBtns.classList.add("btn-hide-pose-btns");
 
