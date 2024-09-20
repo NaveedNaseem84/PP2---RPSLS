@@ -91,11 +91,13 @@ function playGame(playerChoiceValue, computerChoiceValue) {
     if (computerChoiceValue === playerChoiceValue) {
         gameDraw();
     }
-    if (winningCombinations[playerChoiceValue].includes(computerChoiceValue)) {
+    else if (winningCombinations[playerChoiceValue].includes(computerChoiceValue)) {
         playerWon();
     } else {
         computerWon();
     }
+
+   
         
     /*
     else if (playerChoiceValue === rockValue && computerChoiceValue === scissorsValue ||
