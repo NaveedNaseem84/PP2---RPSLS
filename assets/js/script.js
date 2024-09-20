@@ -4,11 +4,12 @@ const scissorsValue = "Scissors";
 const lizardValue = "Lizard";
 const spockValue = "Spock";
 
+
 let computerScore = 0;
 let playerScore = 0;
 let triesLeft = 10;
 
-let gameSelection = [rockValue, paperValue, scissorsValue, lizardValue, spockValue];
+const gameSelection = [rockValue, paperValue, scissorsValue, lizardValue, spockValue];
 const styleGameStatusText = ["style-draw-text", "style-loosing-text", "style-winning-text"];
 
 const gameStatusMessageID = document.getElementById("game-status-message");
@@ -20,7 +21,7 @@ const playerScoreID = document.getElementById("playerScore");
 /*Event Listener for when DOM loads to listen for clicks on all the buttons
 Adapted from the Love Maths project from CI. Will be credited in readme.md*/
 
-
+/*
 document.addEventListener("DOMContentLoaded", function () {
     let buttons = document.getElementsByTagName("button");
 
@@ -40,6 +41,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+*/
+
+let applyEventListeneronDom = document.addEventListener("DOMContentLoaded", applybuttonEventListener);
+
+/* Event listener for buttons on DOM load */
+
+function applybuttonEventListener(){
+    let buttons = document.getElementsByTagName("button");
+
+    for (let button of buttons) {
+        button.addEventListener("click", function () {
+            if (this.getAttribute("id") === "reset") {
+                resetGame();
+            } else if (gameSelection.includes(this.getAttribute("id"))) {
+                let inputType = this.getAttribute("id");
+                playerChoice.innerHTML = inputType;
+                computerRandomChoice();
+                playGame();
+            }
+            if (this.getAttribute("id") === "instructions") {
+                getInstructions();
+            }
+        });
+    }
+}
 
 /* game functions*/
 
@@ -69,8 +96,9 @@ function playGame(playerChoiceValue, computerChoiceValue) {
     } else {
         computerWon();
     }
+    
     checkWinner();
-    countTriesLeft();
+    countTriesLeft();   
 }
 
 /*Randomly select a choice from Rock, Paper, Scissors, Lizard or Spock
@@ -86,7 +114,7 @@ Update the game-status-message with the outcome of the round */
 
 function playerWon() {
     gameStatusMessageID.innerHTML = "";
-    gameStatusMessageID.classList.remove("style-loosing-text");
+    gameStatusMessageID.classList.remove(...styleGameStatusText);
     gameStatusMessageID.classList.add("style-winning-text");
     gameStatusMessageID.innerHTML = "You Win: " + playerChoice.innerHTML + " beats " + computerChoice.innerHTML;
     playerScoreID.innerHTML = ++playerScore;
@@ -99,7 +127,7 @@ Update the game-status-message with the outcome of the round */
 function computerWon() {
 
     gameStatusMessageID.innerHTML = "";
-    gameStatusMessageID.classList.remove("style-winning-text");
+    gameStatusMessageID.classList.remove(...styleGameStatusText);
     gameStatusMessageID.classList.add("style-loosing-text");
     gameStatusMessageID.innerHTML = "You Lose: " + computerChoice.innerHTML + " beats " + playerChoice.innerHTML;
     computerScoreID.innerHTML = ++computerScore;
@@ -111,6 +139,7 @@ Update the game-status-message with the outcome of the round */
 function gameDraw() {
     gameStatusMessageID.innerHTML = "";
     gameStatusMessageID.classList.remove(...styleGameStatusText);
+    gameStatusMessageID.classList.add("style-draw-text");
     gameStatusMessageID.innerHTML = "Draw! Try again.";
 }
 
@@ -175,7 +204,7 @@ function countTriesLeft() {
             gameStatusMessageID.classList.add("style-loosing-text");
             gameStatusMessageID.innerHTML = "Game Over. You Lost!";
 
-        } else if (computerScore === playerScore) {
+        } else {
             gameStatusMessageID.classList.remove(...styleGameStatusText);
             gameStatusMessageID.classList.add("style-draw-text");
             gameStatusMessageID.innerHTML = "It's a Draw!";
