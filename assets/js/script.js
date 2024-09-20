@@ -12,11 +12,20 @@ let triesLeft = 10;
 const gameSelection = [rockValue, paperValue, scissorsValue, lizardValue, spockValue];
 //const styleGameStatusText = ["style-draw-text", "style-loosing-text", "style-winning-text"];
 
+const winningCombinations = {
+    [rockValue]: [scissorsValue, lizardValue],
+    [paperValue]:[rockValue, spockValue],
+    [scissorsValue]: [paperValue, lizardValue],
+    [lizardValue]: [spockValue, paperValue],
+    [spockValue]: [scissorsValue, rockValue]      
+}
+
 const gameStatusMessageID = document.getElementById("game-status-message");
 const playerChoice = document.getElementById("playerChoice");
 const computerChoice = document.getElementById("computerChoice");
 const computerScoreID = document.getElementById("computerScore");
 const playerScoreID = document.getElementById("playerScore");
+const poseBtns = document.getElementById("btn-gameplay-btn-group");
 
 /*Event Listener for when DOM loads to listen for clicks on all the buttons
 Adapted from the Love Maths project from CI. Will be credited in readme.md*/
@@ -47,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let applyEventListeneronDom = document.addEventListener("DOMContentLoaded", applybuttonEventListener);
 
 /* Event listener for buttons on DOM load */
+
 
 function applybuttonEventListener() {
     let buttons = document.getElementsByTagName("button");
@@ -80,8 +90,15 @@ function playGame(playerChoiceValue, computerChoiceValue) {
 
     if (computerChoiceValue === playerChoiceValue) {
         gameDraw();
-
-    } else if (playerChoiceValue === rockValue && computerChoiceValue === scissorsValue ||
+    }
+    if (winningCombinations[playerChoiceValue].includes(computerChoiceValue)) {
+        playerWon();
+    } else {
+        computerWon();
+    }
+        
+    /*
+    else if (playerChoiceValue === rockValue && computerChoiceValue === scissorsValue ||
         (playerChoiceValue === scissorsValue && computerChoiceValue === paperValue) ||
         (playerChoiceValue === paperValue && computerChoiceValue === rockValue) ||
         (playerChoiceValue === rockValue && computerChoiceValue === lizardValue) ||
@@ -93,10 +110,9 @@ function playGame(playerChoiceValue, computerChoiceValue) {
         (playerChoiceValue === spockValue && computerChoiceValue === rockValue)) {
         playerWon();
 
-    } else {
-        computerWon();
-    }
-
+    } 
+        */
+     
     checkWinner();
     countTriesLeft();
 }
@@ -156,16 +172,26 @@ function resetGame() {
     computerScore = 0;
     triesLeft = 10;
 
-    gameStatusMessageID.classList.remove("style-winning-text","style-loosing-text","style-draw-text");
-    playerScoreID.classList.remove("style-winning-text","style-loosing-text","style-draw-text");
-    computerScoreID.classList.remove("style-winning-text","style-loosing-text","style-draw-text");
+    gameStatusMessageID.classList.remove("style-winning-text",
+        "style-loosing-text",
+        "style-draw-text");
+
+    playerScoreID.classList.remove("style-winning-text",
+        "style-loosing-text",
+        "style-draw-text");
+
+    computerScoreID.classList.remove("style-winning-text",
+        "style-loosing-text",
+        "style-draw-text");
+
     gameStatusMessageID.innerHTML = "Game reset. Choose your pose.";
     playerScoreID.innerHTML = playerScore;
     computerScoreID.innerHTML = computerScore;
     computerChoice.innerHTML = "";
     playerChoice.innerHTML = "";
     document.getElementById("tries-left-count").innerHTML = triesLeft;
-    document.getElementById("btn-gameplay-btn-group").style.display = "block";
+    poseBtns.classList.remove("btn-hide-pose-btns");
+    poseBtns.classList.add("btn-show-pose-btns");
 }
 
 /* check both scores. Winner's score styled to green, draw to orange loosers to red? (check color against background!) */
@@ -204,8 +230,8 @@ function countTriesLeft() {
         gameStatusMessageID.classList.remove("style-loosing-text",
             "style-draw-text",
             "style-winning-text");
-
-        document.getElementById("btn-gameplay-btn-group").style.display = "none";
+            poseBtns.classList.remove("btn-show-pose-btns");
+            poseBtns.classList.add("btn-hide-pose-btns");
 
         if (playerScore > computerScore) {
             gameStatusMessageID.classList.add("style-winning-text");

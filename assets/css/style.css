@@ -72,6 +72,15 @@ i:hover {
     
 }
 
+.btn-hide-pose-btns {
+    display: none;
+}
+
+.btn-show-pose-btns {
+    display: block;
+}
+
+
 #text-versus {    
      padding-top: 10px;      
  }
