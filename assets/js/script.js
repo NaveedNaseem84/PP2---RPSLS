@@ -106,7 +106,7 @@ function playerWon() {
 
     gameStatusMessageID.innerHTML = "";
     gameStatusMessageID.classList.remove("style-loosing-text","style-draw-text");
-    gameStatusMessageID.classList.toggle("style-winning-text");
+    gameStatusMessageID.classList.add("style-winning-text");
     gameStatusMessageID.innerHTML = "You Win: " + playerChoice.innerHTML + " beats " + computerChoice.innerHTML;
     playerScoreID.innerHTML = ++playerScore;
 
