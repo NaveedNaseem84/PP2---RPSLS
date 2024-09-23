@@ -59,6 +59,7 @@ i {
 
 i:hover {
     border: 2px solid lightgreen;
+    cursor: pointer;
 }
 
 #playerScore,
