@@ -54,7 +54,7 @@ The user is presented with five options - Rock, Paper, Scissors, Lizard or Spock
 
 ![Choice selection hover state](readme-images/highlighted-choice-pose.png)
 
-One a choice has been made, the game will randomly generate a choice for the computer and play the game. It will then evaluate who is the winner based on the choices drawn. 
+Once a player (user) choice has been made, the game will be played against a random choice selected for the computer. It will then evaluate who is the winner based on the choices drawn. 
 
 Illustrated below is the outcome when the player wins:
 
@@ -62,11 +62,11 @@ Illustrated below is the outcome when the player wins:
 
 On winning, the player's score is incremented by 1, the game status above the pose buttons congratulates the player and these elements are styled in green reflecting the win. As the computer score is less than the players score, this is styled to reflect  as shown above. 
 
-On losing, the computer's score is incremented by 1, the game status commissurates the player, and these elements are styled to reflect. If the computer score is higher than than the player score, again this is styled to reflect: 
+On losing, the computer's score is incremented by 1, the game status commissurates the player, and these elements are styled to reflect. If the computer score is higher than the player score, it is displayed as follows: 
 
 ![Computer wins:](readme-images/computer-won.png)
 
-Similar to the winning/losing states, if the round is a draw the respective elements are styled and the player notified of the round outcome:
+Similar to the winning/losing states, if the round is a draw the respective elements are styled and the player notified of the  outcome:
 
 ![Game drawn:](readme-images/game-drawn.png)
 
@@ -84,16 +84,18 @@ Once this reaches 0, the game is over, the pose buttons are hidden from view and
 
 ![Gameover](readme-images/game-over.png)
 
-The "restart" button allows for the game to be restarted. This can be done at anytime including when the game is over.
+The "restart" button resets the game to back to default values, and can be done at anytime and is required when the game is over to play again.
 
 ![Reset](readme-images/game-reset.png)
 
-In addition to this, the player has the option to view the rules of the game in a convinient toggle option with minimum distruption:
+In addition to this, the player also has the option to view the rules of the game in a convenient toggle option with minimum distruption:
 
 ![Rules](readme-images/rules-toggle.png)
 
 
 ## Testing
+
+The testing above found no issues in performance or accessibility and I believe the site meets the requirements of the user stories and its intended purpose.
 
 ### Bugs 
 
@@ -117,7 +119,7 @@ The site has been tested with the following:
 ### Accessibility/Performance
 Lighthouse in devtools produced the following results:
 
-![Lighthouse score](image.png)
+![Lighthouse score](readme-images/lighthouse-score.png)
 
 ## Future Developments
 
