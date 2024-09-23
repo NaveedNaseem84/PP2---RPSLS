@@ -144,6 +144,26 @@ footer {
         border-radius: 15px;
     }
 
+    #game-stats {
+        display: flex;
+        margin-left: 18%;
+        padding-top: 20px;
+        width: 80%;
+        text-align: left;
+    }
+
+    #text-versus {
+        padding: 20px 10px 10px 110px;
+        font-size: 170%;
+    }
+
+    #game-stats-scores {
+        padding-right: 10px;
+        width: 220px;
+        text-align: right;
+        font-size: 80%;
+    }
+
 }
 
 /* media query for laptops, desktops etc...*/
