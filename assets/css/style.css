@@ -15,11 +15,12 @@ header img {
 
 /* Body styling*/
 body {
-    background-color: #183153;
+    margin: 0;
     font-family: 'inria-sans-light', sans-serif;
     font-size: 1.0rem;
     font-weight: bold;
-    margin: 0;
+    background-color: #183153;
+
 }
 
 .text-center {
@@ -28,31 +29,32 @@ body {
 
 /* main content styling */
 main {
+    margin: 0;
     background-color: #183153;
     color: white;
-    margin: 0;
 }
 
 .players-text {
-    padding-top: 10px;
     margin: 0;
+    padding-top: 10px;
 }
 
 .btn-game-button {
+    display: inline-block;
+    padding: 10px 5px 5px 5px;
     border: none;
     text-align: center;
-    padding: 10px 5px 5px 5px;
-    background-color: #183153;
-    display: inline-block;
     font-size: 1.3rem;
+    background-color: #183153;
 }
 
 i {
+    padding: 20px 20px 20px 20px;
+    font-size: 120%;
     border: 2px solid white;
     border-radius: 15px;
-    padding: 20px 20px 20px 20px;
     color: white;
-    font-size: 120%;
+
 }
 
 i:hover {
@@ -70,11 +72,12 @@ i:hover {
 }
 
 #game-board {
-    border: 2px solid white;
-    border-radius: 15px;
     margin-left: 10px;
     margin-right: 10px;
     padding-bottom: 25px;
+    border: 2px solid white;
+    border-radius: 15px;
+
 }
 
 .btn-hide-pose-btns {
@@ -103,8 +106,9 @@ i:hover {
 }
 
 .btn-game-controls {
-    font-size: 0.7rem;
     padding-top: 10px;
+    font-size: 0.7rem;
+
 }
 
 .style-winning-text {
@@ -129,17 +133,17 @@ footer {
 @media screen and (min-width: 768px) {
 
     main {
+        height: 40vh;
         font-size: 130%;
         padding: 20px;
-        height: 40vh;
     }
 
     #game-board {
-        border-radius: 15px;
         margin: auto;
+        border-radius: 15px;
     }
-}
 
+}
 
 /* media query for laptops, desktops etc...*/
 @media screen and (min-width: 992px) {
@@ -149,20 +153,20 @@ footer {
     }
 
     main {
-        background-color: #021526;
-        font-size: 170%;
         margin-top: 3%;
         height: 50vh;
+        font-size: 170%;
+        background-color: #021526;
     }
 
     #game-board {
         margin-top: 10px;
+        padding-bottom: 30px;
         width: 40%;
         margin: auto;
-        background-color: #183153;
-        padding-bottom: 30px;
         border-width: 3px;
         font-size: 80%;
+        background-color: #183153;
     }
 
     #game-stats {
@@ -173,25 +177,25 @@ footer {
     }
 
     #game-stats-choice {
-        width: 220px;
-        text-align: left;
         margin-right: 5%;
         margin-left: 5%;
         padding-left: 10%;
+        width: 220px;
+        text-align: left;
         font-size: 80%;
     }
 
     #game-stats-scores {
-        text-align: right;
-        width: 220px;
         padding-right: 10px;
+        width: 220px;
+        text-align: right;
         font-size: 80%;
     }
 
     #text-versus {
         padding: 20px 12px 10px 10px;
         font-size: 170%;
-        
+
     }
 
     .btn-game-button {
@@ -203,6 +207,16 @@ footer {
     #playerScore,
     #computerScore {
         font-size: 110%;
+    }
+
+}
+
+/*larger screens/resolutions*/
+@media screen and (min-width: 2560px) {
+
+    #game-stats {
+        margin-left: 11%;
+        padding-top: 20px;
     }
 
 }
