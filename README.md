@@ -17,7 +17,7 @@ As a user, I want:
  * To have the option to play on different devices as and when it suits.
 
 ### Mind Map: Ideas
-Following on from user stories and intended purpose, and initial mind map was created to capture the logic of the game. The purpose of this was provide a high-level understanding of how the user stories could be implemented:
+Following on from user stories and intended purpose, an initial mind map was created to capture the logic of the game. The purpose of this was provide a high-level understanding of how the user stories could be implemented:
 
 ![Mindmap](readme-images/initial-mindmap.png)
 
@@ -47,6 +47,12 @@ Once the UX element had been completed, I mapped out the JavaScript functions ne
 
 ![Pesudo - JS functions](readme-images/psuedo%20-%20JS%20functions.png)
 
+### Process Map
+
+The diagram below maps out the processes and the path taken evaluating the state of the game and the choices made:
+
+![Process Map](readme-images/processmap.png)
+
 ## Landing page
 
 The landing page presents the users with a clean, easy to follow layout of the game. The user is welcomed and invited to have fun with clear instructions on what they need to do next (Choose a pose). The site and game are accessible on multiple devices giving a seamless user experience as illustrated below:
@@ -66,7 +72,6 @@ Once a player (user) choice has been made, the game will be played against a ran
 On winning, the player's score is incremented by one, the player congratulated, and the respected elements styled reflecting the win. As the computer score is less than the players score, this is styled to reflect:
 
 ![Player wins: ](readme-images/player-wins.png)
-
 
 
 On losing, the computer's score is incremented by one, the player commiserated, and again the respected elements are styled. If the computer score is higher than the player score, it is displayed as follows: 
@@ -227,7 +232,7 @@ Github has provided step by step instructions on how to do this [here.](https://
 
 * #### Figma: [Figma: The Collaborative Interface Design Tool](https://figma.com/)
 
-  * Figma has been used to create the RPSLS logo and the UX illustrations of the site.
+  * Figma has been used to create the RPSLS logo, the process map and the UX illustrations of the site.
 
 * #### Pixelied: [Pixeled](https://pixelied.com/convert/jpg-converter/jpg-to-webp)
   * Pixelied was used to optimise the logo for web use. 
@@ -244,12 +249,12 @@ Github has provided step by step instructions on how to do this [here.](https://
 
   * This was converted using favicon.io (link in programs used above).
 
-* Event Listener for when DOM loads to listen for clicks on all the buttons adapted from the [Love Maths CI project](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LM101+3/courseware/2d651bf3f23e48aeb9b9218871912b2e/78f3c10a937c4fe09640c7c0098d16bd/) and developed further as needed.
+* The JavaScript Event Listener for when DOM loads to listen for clicks on all the buttons was adapted from the [Love Maths CI project](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LM101+3/courseware/2d651bf3f23e48aeb9b9218871912b2e/78f3c10a937c4fe09640c7c0098d16bd/) and developed further as needed.
 
  * The rules for the game are taken from [The Big BANG Theory Wiki](https://bigbangtheory.fandom.com/wiki/Rock,_Paper,_Scissors,_Lizard,_Spock).
 
 ### General
-* The following resources have been used as a general properties guide for HTML, CSS and JavaScript:
+* The following resources have been used as a general properties guide for HTML, CSS and JavaScript built in functions:
 
   * [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 
   * [W3Schools](https://www.w3schools.com/) 
