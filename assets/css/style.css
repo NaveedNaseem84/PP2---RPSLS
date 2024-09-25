@@ -106,7 +106,16 @@ i:hover {
 .btn-game-controls {
     padding-top: 10px;
     font-size: 0.7rem;
+}
 
+#Instructions{   
+    display: none;
+}
+
+#Instructions li{   
+    padding: 5px;
+    margin-right:13px;
+    list-style-type: none;    
 }
 
 .style-winning-text {

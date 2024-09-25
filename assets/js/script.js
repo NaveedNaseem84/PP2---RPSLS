@@ -30,7 +30,7 @@ const computerScoreID = document.getElementById("computerScore");
 const playerScoreID = document.getElementById("playerScore");
 const poseBtns = document.getElementById("btn-gameplay-btn-group");
 
-const applyEventListeneronDom = document.addEventListener("DOMContentLoaded", applybuttonEventListener);
+document.addEventListener("DOMContentLoaded", applybuttonEventListener);
 
 //start of functions
 //*******************
@@ -47,14 +47,17 @@ function applybuttonEventListener() {
 
     for (let button of buttons) {
         button.addEventListener("click", buttonClickListener);
-    }
-    return applyEventListeneronDom;
+    } 
 }
 
 /** 
  * Execute relevant function on click.
  * 
  * Differentiated and evaluated using Button Id's.
+ * 
+ * reset - resetGame called
+ * 
+ * Instructions - GetInstructions called
  */
 
 function buttonClickListener() {
@@ -73,9 +76,15 @@ function buttonClickListener() {
 }
 
 /** 
- * check to see if the player choice beats, loses or draws the computer and vice versa.
+ * Check to see if the player choice beats, loses or draws the computer and vice versa.
  * 
- * Once executed, will call the relevant function for further processing.
+ * If player/computer choice match: Call gameDraw
+ * 
+ * If player choice beats computer, call PlayerWon
+ * 
+ * Otherwise call ComputerWon
+ * 
+ * checkWinner and countTriesLeft method called. 
  */
 function playGame(playerChoiceValue, computerChoiceValue) {
 
@@ -98,7 +107,7 @@ function playGame(playerChoiceValue, computerChoiceValue) {
  * 
  * Random selection from gameSelection array created and passed to computer choice element.
  * 
- *Choice: rock, paper, scissors, lizard or spoke.
+ *gameSelection: rock, paper, scissors, lizard or spoke.
  */
 function computerRandomChoice() {
 
@@ -108,11 +117,10 @@ function computerRandomChoice() {
 }
 
 /** 
- * Player score incremented by 1.
  * 
- * Player notfied of win.
- * 
- * Game status updated and styled reflecting.
+ * If player wins:
+ * 1. increment the playerScore variable by 1. 
+ * 2  UI updated to show winning text and new score styled to reflect the player win.
  */
 
 function playerWon() {
@@ -125,11 +133,10 @@ function playerWon() {
 }
 
 /**
- * computer score incremented by 1.
+ * If computer wins:
+ * 1. increment the computerScore variable by 1
  * 
- * Player notfied of loss.
- * 
- * Game status updated and styled reflecting.
+ * 2 . UI updated to show losing text and new score styled to reflect the player loss.
  */
 
 function computerWon() {
@@ -142,11 +149,9 @@ function computerWon() {
 }
 
 /**
- * Game drawn.
+ * If drawn:
  * 
- * Player notfied of draw.
- * 
- * Game status updated and styled accordingly.
+ * UI updated to show draw text and score styled to reflect the draw.
  */
 
 function gameDraw() {
@@ -158,11 +163,13 @@ function gameDraw() {
 }
 
 /** 
- * All game parameters return to original states.
+ * playerScore, computer Score and triesLeft variables returned to defaults
  * 
- * All styling/text removed from all elements.
+ * playerScore = 0, computerScore =0, triesLeft = 10.
  * 
- * Player notified of reset
+ *  UI updated with text displayed and styled reflecting the reset.
+ * 
+ * Pose buttons displayed and in use again.
  */
 
 function resetGame() {
@@ -187,9 +194,13 @@ function resetGame() {
 }
 
 /** 
- * Both scores checked and styled according reflecting winner/loser/drawn
+ * Styling to computerScore and PlayerScore removed
  * 
- * Game status updated and styled reflecting.
+ * UI updated to reflect:
+ * 
+ * 1. Winner:  score = green 
+ * 2. Loser: score = lightcoral
+ * 3. Draw: score = orange
  */
 
 function checkWinner() {
@@ -212,13 +223,16 @@ function checkWinner() {
 }
 
 /** 
- * Number of tries subtracted.
+ *  * 
+ * 1. triesLeft variable subtracted by 1.
+ * 2. UI updated to show the new value.
  * 
- * Winning,losing or drawn scores styled.
+ * If tries left reaches 0:
+ * 1. UI updated to remove all styling from game status.
+ * 2. UI updated to show if the player or computer score winning/loosing/drawn.
+ * 3. UI updated to show text on the outcome of #2.
+ * 4. UI updated to hide the pose buttons till reset called.
  * 
- * Game status updated to reflect.
- * 
- * Pose buttons hidden till reset if tries up.
  */
 
 function countTriesLeft() {
@@ -251,26 +265,12 @@ function countTriesLeft() {
 }
 
 /** 
- * Winning combinations made available to player on toggle.
+ * UX updated to show the rules of the game on toggle mode.
  * 
  */
 function getInstructions() {
 
     let instructionsDiv = document.getElementById('Instructions');
-    instructionsDiv.style.textAlign = "center";
-    instructionsDiv.innerHTML =
-        `<p>Scissors beats Paper </p>
-        <p>Paper beats Rock</p>
-        <p>Rock beats Lizard</p>
-        <p>Lizard beats Spock </p>
-        <p>Spock beats Scissors</p>
-        <p>Scissors beats Lizard</p>
-        <p>Lizard beats Paper </p>
-        <p>Paper beats Spock</p>
-        <p>Spock beats Rock</p>
-        <p>Rock beats Scissors</p>     
-          `;
-
     if (instructionsDiv.style.display === "block") {
         instructionsDiv.style.display = "none";
     } else {
