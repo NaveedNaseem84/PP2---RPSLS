@@ -4,8 +4,7 @@
 
 /* Header styling*/
 header {
-    background-color: #183153;
-    text-align: center;
+    background-color: #183153;   
 }
 
 header img {
@@ -20,7 +19,6 @@ body {
     font-size: 1.0rem;
     font-weight: bold;
     background-color: #183153;
-
 }
 
 .text-center {
@@ -42,8 +40,7 @@ main {
 .btn-game-button {
     display: inline-block;
     padding: 10px 5px 5px 5px;
-    border: none;
-    text-align: center;
+    border: none;    
     font-size: 1.3rem;
     background-color: #183153;
 }

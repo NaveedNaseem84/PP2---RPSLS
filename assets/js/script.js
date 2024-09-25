@@ -12,6 +12,8 @@ let playerScore = 0;
 let triesLeft = 10;
 
 const gameSelection = [rockValue, paperValue, scissorsValue, lizardValue, spockValue];
+const styleClasses = ["style-winning-text", "style-loosing-text", "style-draw-text"];
+
 
 const winningCombinations = {
     [rockValue]: [scissorsValue, lizardValue],
@@ -28,34 +30,45 @@ const computerScoreID = document.getElementById("computerScore");
 const playerScoreID = document.getElementById("playerScore");
 const poseBtns = document.getElementById("btn-gameplay-btn-group");
 
+const applyEventListeneronDom = document.addEventListener("DOMContentLoaded", applybuttonEventListener);
+
+//start of functions
+//*******************
+
 /*Event Listener for when DOM loads to listen for clicks on all the buttons
 Adapted from the Love Maths project from CI. Will be credited in readme.md*/
 
-let applyEventListeneronDom = document.addEventListener("DOMContentLoaded", applybuttonEventListener);
-
-//start of functions
-
 /**
  * Apply event listener to all buttons on DOM load.
-*/
+ */
 function applybuttonEventListener() {
 
     let buttons = document.getElementsByTagName("button");
 
     for (let button of buttons) {
-        button.addEventListener("click", function () {
-            if (this.getAttribute("id") === "reset") {
-                resetGame();
-            } else if (gameSelection.includes(this.getAttribute("id"))) {
-                let inputType = this.getAttribute("id");
-                playerChoice.innerHTML = inputType;
-                computerRandomChoice();
-                playGame();
-            }
-            if (this.getAttribute("id") === "instructions") {
-                getInstructions();
-            }
-        });
+        button.addEventListener("click", buttonClickListener);
+    }
+    return applyEventListeneronDom;
+}
+
+/** 
+ * Execute relevant function on click.
+ * 
+ * Differentiated and evaluated using Button Id's.
+ */
+
+function buttonClickListener() {
+
+    if (this.getAttribute("id") === "reset") {
+        resetGame();
+    } else if (gameSelection.includes(this.getAttribute("id"))) {
+        let inputType = this.getAttribute("id");
+        playerChoice.innerHTML = inputType;
+        computerRandomChoice();
+        playGame();
+    }
+    if (this.getAttribute("id") === "instructions") {
+        getInstructions();
     }
 }
 
@@ -63,7 +76,7 @@ function applybuttonEventListener() {
  * check to see if the player choice beats, loses or draws the computer and vice versa.
  * 
  * Once executed, will call the relevant function for further processing.
-*/
+ */
 function playGame(playerChoiceValue, computerChoiceValue) {
 
     playerChoiceValue = playerChoice.innerHTML;
@@ -85,8 +98,8 @@ function playGame(playerChoiceValue, computerChoiceValue) {
  * 
  * Random selection from gameSelection array created and passed to computer choice element.
  * 
-*Choice: rock, paper, scissors, lizard or spoke.
-*/
+ *Choice: rock, paper, scissors, lizard or spoke.
+ */
 function computerRandomChoice() {
 
     let randomSelection = gameSelection[(Math.floor(Math.random() * gameSelection.length))];
@@ -100,12 +113,11 @@ function computerRandomChoice() {
  * Player notfied of win.
  * 
  * Game status updated and styled reflecting.
-*/
+ */
 
 function playerWon() {
-
-    gameStatusMessageID.innerHTML = "";
-    gameStatusMessageID.classList.remove("style-loosing-text","style-draw-text");
+    
+    gameStatusMessageID.classList.remove(...styleClasses);
     gameStatusMessageID.classList.add("style-winning-text");
     gameStatusMessageID.innerHTML = "You Win: " + playerChoice.innerHTML + " beats " + computerChoice.innerHTML;
     playerScoreID.innerHTML = ++playerScore;
@@ -118,12 +130,11 @@ function playerWon() {
  * Player notfied of loss.
  * 
  * Game status updated and styled reflecting.
-*/
+ */
 
 function computerWon() {
-
-    gameStatusMessageID.innerHTML = "";
-    gameStatusMessageID.classList.remove("style-winning-text","style-draw-text");
+   
+    gameStatusMessageID.classList.remove(...styleClasses);
     gameStatusMessageID.classList.add("style-loosing-text");
     gameStatusMessageID.innerHTML = "You Lose: " + computerChoice.innerHTML + " beats " + playerChoice.innerHTML;
     computerScoreID.innerHTML = ++computerScore;
@@ -136,12 +147,11 @@ function computerWon() {
  * Player notfied of draw.
  * 
  * Game status updated and styled accordingly.
-*/
+ */
 
 function gameDraw() {
-    
-    gameStatusMessageID.innerHTML = "";
-    gameStatusMessageID.classList.remove("style-winning-text","style-loosing-text");
+      
+    gameStatusMessageID.classList.remove(...styleClasses);
     gameStatusMessageID.classList.add("style-draw-text");
     gameStatusMessageID.innerHTML = "Draw! Try again.";
 
@@ -153,25 +163,17 @@ function gameDraw() {
  * All styling/text removed from all elements.
  * 
  * Player notified of reset
-*/
+ */
 
 function resetGame() {
 
     playerScore = 0;
     computerScore = 0;
     triesLeft = 10;
-
-    gameStatusMessageID.classList.remove("style-winning-text",
-        "style-loosing-text",
-        "style-draw-text");
-
-    playerScoreID.classList.remove("style-winning-text",
-        "style-loosing-text",
-        "style-draw-text");
-
-    computerScoreID.classList.remove("style-winning-text",
-        "style-loosing-text",
-        "style-draw-text");
+   
+    gameStatusMessageID.classList.remove(...styleClasses);    
+    playerScoreID.classList.remove(...styleClasses);
+    computerScoreID.classList.remove(...styleClasses);
 
     gameStatusMessageID.innerHTML = "Game reset. Choose your pose.";
     playerScoreID.innerHTML = playerScore;
@@ -185,21 +187,16 @@ function resetGame() {
 }
 
 /** 
- * Both scores checked and styled according reflecting winner/looser/drawn
+ * Both scores checked and styled according reflecting winner/loser/drawn
  * 
  * Game status updated and styled reflecting.
-*/
+ */
 
-function checkWinner() {   
+function checkWinner() {
 
-    computerScoreID.classList.remove("style-loosing-text",
-        "style-draw-text",
-        "style-winning-text");
-    
-        playerScoreID.classList.remove("style-loosing-text",
-        "style-draw-text",
-        "style-winning-text");
-    
+    computerScoreID.classList.remove(...styleClasses);
+    playerScoreID.classList.remove(...styleClasses);
+
     if (playerScore > computerScore) {
         playerScoreID.classList.add("style-winning-text");
         computerScoreID.classList.add("style-loosing-text");
@@ -217,49 +214,46 @@ function checkWinner() {
 /** 
  * Number of tries subtracted.
  * 
- * Winning,loosing or drawn scores styled.
+ * Winning,losing or drawn scores styled.
  * 
  * Game status updated to reflect.
  * 
  * Pose buttons hidden till reset if tries up.
-*/
+ */
 
 function countTriesLeft() {
 
     triesLeft--;
     document.getElementById("tries-left-count").innerHTML = triesLeft;
 
-    if (triesLeft === 0) {
-        gameStatusMessageID.classList.remove("style-loosing-text",
-            "style-draw-text",
-            "style-winning-text");
+    if (triesLeft === 0) {       
 
-            computerChoice.innerHTML = "";
-            playerChoice.innerHTML = "";
+        gameStatusMessageID.classList.remove(...styleClasses);
+        computerChoice.innerHTML = "";
+        playerChoice.innerHTML = "";
 
-            poseBtns.classList.remove("btn-show-pose-btns");
-            poseBtns.classList.add("btn-hide-pose-btns");
+        poseBtns.classList.remove("btn-show-pose-btns");
+        poseBtns.classList.add("btn-hide-pose-btns");
 
         if (playerScore > computerScore) {
             gameStatusMessageID.classList.add("style-winning-text");
-            gameStatusMessageID.innerHTML = "Game Over. You Won!";           
+            gameStatusMessageID.innerHTML = "Game Over. You Won!";
         } else if (computerScore > playerScore) {
             gameStatusMessageID.classList.add("style-loosing-text");
-            gameStatusMessageID.innerHTML = "Game Over. You Lost!";     
+            gameStatusMessageID.innerHTML = "Game Over. You Lost!";
 
         } else {
             gameStatusMessageID.classList.add("style-draw-text");
-            gameStatusMessageID.innerHTML = "It's a Draw!";      
+            gameStatusMessageID.innerHTML = "It's a Draw!";
         }
     }
 
 }
-/* Provide user instructions for the user*/
 
 /** 
  * Winning combinations made available to player on toggle.
  * 
-*/
+ */
 function getInstructions() {
 
     let instructionsDiv = document.getElementById('Instructions');
