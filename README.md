@@ -152,6 +152,24 @@ The site has been tested with the following:
 
     ![JSHint metrics](readme-images/jshint-metrics.png)
 
+### Manual Testing
+
+The following manual testing was carried out to confirm that the game performed as required and results matched the expected output. 
+
+| Test | Test Step/Action                    |Input Type   |Expected                      |Result                                                        | Pass/Fail|
+| :----:|:-----------------------------------|:-----------:|:-----------------------------|:-------------------------------------------------------------|:--------:| 
+| 1     |Rock, Paper,Scissors,Lizard or Spock|Click        |See player selection          |Player selection shown                                        |Pass      | 
+| 2     |As Above                            |Click        |Random choice for computer    |Random choice for computer shown.                             |Pass      | 
+| 3     |As Above                            |Click        |Determine if player won.      |Player won - UX updated to reflect.                           |Pass      | 
+| 4     |As Above                            |Click        |Determine if player lost.     |Player lost - UX updated to reflect.                          |Pass      | 
+| 5     |As Above                            |Click        |Determine if player drew.     |Draw - UX updated to reflect.                                 |Pass      | 
+| 6     |As Above                            |Click        |Increment winner's score.     |Incremented - UX updated to reflect.                          |Pass      |
+| 7     |As Above                            |Click        |GameOver once tries used up.  |GameOver reached when tries at 0. UX updated to show results. |Pass      | 
+| 8     |Restart                             |Click        |Restart the game.             |Game restarted - UX updated with no values.                   |Pass      |
+| 9     |Rules                               |Click        |Display rules.                |Rules displayed/hidden on toggle.                             |Pass      |
+| 10    |Mobile version                      |Touch        |Tests 1-9.                    |Test 1-9 satisfied.                                           |Pass      |
+|       |                                    |             |                              |                                                              |          |
+
 
 ### Accessibility/Performance
 Lighthouse in devtools produced the following results:
