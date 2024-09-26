@@ -267,7 +267,7 @@ Github has provided step by step instructions on how to do this [here.](https://
 
   * This was converted using favicon.io (link in programs used above).
 
-* The JavaScript Event Listener for when DOM loads to listen for clicks on all the buttons was adapted from the [Love Maths CI project](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LM101+3/courseware/2d651bf3f23e48aeb9b9218871912b2e/78f3c10a937c4fe09640c7c0098d16bd/) and developed further as needed.
+* The JavaScript Event Listener code for when DOM loads to listen for clicks on all the buttons was adapted from the [Love Maths CI project](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LM101+3/courseware/2d651bf3f23e48aeb9b9218871912b2e/78f3c10a937c4fe09640c7c0098d16bd/) and developed further as needed.
 
  * The rules for the game are taken from [The Big BANG Theory Wiki](https://bigbangtheory.fandom.com/wiki/Rock,_Paper,_Scissors,_Lizard,_Spock).
 
