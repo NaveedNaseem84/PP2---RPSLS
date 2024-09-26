@@ -1,5 +1,5 @@
 # Rock, paper, scissors, lizard, or Spock (RPSLS) In JavaScript.
-RPSLS is an interactive website aimed to provide users of all ages with a seamless experience whilst playing rock, paper, scissors - extended to included lizard and spock poses. 
+RPSLS is an interactive JavaScript website aimed to provide users of all ages with a seamless experience whilst playing rock, paper, scissors - extended to included lizard and spock poses. 
 
 The intended purpose is to provide a clean take on the all-time classic game, providing a layout that is easy to use and navigate with an option to view the rules on demand. Potential uses for the site can be a quick 5-minute break away from the normal day or played on a device and time suited to the user.
 
@@ -49,13 +49,13 @@ Once the UX element had been completed, I mapped out the JavaScript functions ne
 
 ### Process Map
 
-The diagram below maps out the processes and the path taken evaluating the state of the game and the choices made:
+The diagram below maps out the processes and the path taken evaluating the state of the game on the choices made:
 
 ![Process Map](readme-images/processmap.png)
 
 ## Landing page
 
-The landing page presents the users with a clean, easy to follow layout of the game. The user is welcomed and invited to have fun with clear instructions on what they need to do next (Choose a pose). The site and game are accessible on multiple devices giving a seamless user experience as illustrated below:
+The landing page presents the user with a clean, easy to follow layout of the game. The user is welcomed and invited to have fun with clear instructions on what they need to do next (Choose a pose). The site and game are accessible on multiple devices giving a seamless user experience as illustrated below:
 
 ![RPSLS show on different devices ](readme-images/responsive-on-all-devices.png)
 
@@ -154,9 +154,9 @@ The site has been tested with the following:
 
 ### Manual Testing
 
-The following manual testing was carried out to confirm that the game performed as required and results matched the expected output. 
+The following manual testing was carried out to confirm if the game performed as required and results matched the expected output. 
 
-| Test | Test Step/Action                    |Input Type   |Expected                      |Result                                                        | Pass/Fail|
+| Test | Test Step/Action                    |Input Type   |Expected                      |Result                                                        | Result|
 | :----:|:-----------------------------------|:-----------:|:-----------------------------|:-------------------------------------------------------------|:--------:| 
 | 1     |Rock, Paper,Scissors,Lizard or Spock|Click        |See player selection          |Player selection shown                                        |Pass      | 
 | 2     |As Above                            |Click        |Random choice for computer    |Random choice for computer shown.                             |Pass      | 
@@ -209,7 +209,7 @@ The site was deployed to GitHub pages. The steps to deploy are as follows:
 4.	Under Branch, click Save.
 5.	Go back to the Code tab. Wait a few minutes for the build to finish and refresh your repo which will show the deployment has completed with a green tick at the top:
 
-![Sucessful deployment](readme-images/sucessful-deployment.png)
+![Successful deployment](readme-images/sucessful-deployment.png)
 
 6.	On the right-hand side, in the Environments section, click on 'github-pages'.
 7.	Click View deployment to see the live site.
@@ -234,7 +234,7 @@ Github has provided step by step instructions on how to do this [here.](https://
 ### Frameworks, Libraries and Programs Used
 * #### Google Fonts: [Google Orbitron font](https://fonts.google.com/specimen/Orbitron) and [Google Inria Sans font](https://fonts.google.com/specimen/Inria+Sans)
 
-  * The Orbitron and Inria Sans fonts was imported into the style sheet (style.css) and used throughout the project.
+  * The Orbitron and Inria Sans fonts were imported into the style sheet (style.css) and used throughout the project.
 
 * #### Font Awesome: [Font awesome](https://fontawesome.com/)
 
@@ -282,3 +282,12 @@ A huge thank you to Code Institute for the learning and lesson material which ha
 
 ## Personal Summary
 
+Like my first project, this project has brought with it reasonable learning curve. Ranging from the dos and don’ts from an industry standard point of view to the amazing support available on the slack channels, and the invaluable advice from an amazing mentor. This learning has been noted and any actions arisen as a result to work upon.
+
+One of the main take away points has been around the importance of code refactoring. Understanding that the final product performs and looks as required but aiming to achieve the following for internal code:
+
+1. Re-structuring the code (JavaScript in this case) internally making it more efficient.
+2. Improving code readability so it becomes self-explanatory.
+3. Removing duplication of code.
+
+I have taken this on board as a learning curve with a view to maintaining this on future projects.

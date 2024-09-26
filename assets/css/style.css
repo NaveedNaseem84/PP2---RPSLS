@@ -4,7 +4,7 @@
 
 /* Header styling*/
 header {
-    background-color: #183153;   
+    background-color: #183153;
 }
 
 header img {
@@ -40,7 +40,7 @@ main {
 .btn-game-button {
     display: inline-block;
     padding: 10px 5px 5px 5px;
-    border: none;    
+    border: none;
     font-size: 1.3rem;
     background-color: #183153;
 }
@@ -51,7 +51,6 @@ i {
     border: 2px solid white;
     border-radius: 15px;
     color: white;
-
 }
 
 i:hover {
@@ -75,7 +74,6 @@ i:hover {
     padding-bottom: 25px;
     border: 2px solid white;
     border-radius: 15px;
-
 }
 
 .btn-hide-pose-btns {
@@ -108,14 +106,14 @@ i:hover {
     font-size: 0.7rem;
 }
 
-#Instructions{   
+#rulesinfo {
     display: none;
 }
 
-#Instructions li{   
+#rulesinfo li {
     padding: 5px;
-    margin-right:13px;
-    list-style-type: none;    
+    margin-right: 13px;
+    list-style-type: none;
 }
 
 .style-winning-text {
@@ -222,7 +220,6 @@ footer {
     #text-versus {
         padding: 20px 12px 10px 10px;
         font-size: 170%;
-
     }
 
     .btn-game-button {
@@ -238,7 +235,7 @@ footer {
 
 }
 
-/*larger screens/resolutions*/
+/*larger screen resolutions*/
 @media screen and (min-width: 2560px) {
 
     #game-stats {

@@ -53,11 +53,13 @@ function applybuttonEventListener() {
 /** 
  * Execute relevant function on click.
  * 
- * Differentiated and evaluated using Button Id's.
+ * rock, paper, scissors, lizard, spock - play game
  * 
  * reset - resetGame called
  * 
- * Instructions - GetInstructions called
+ * rules - GetRules called
+ * 
+ * Random choice also called
  */
 
 function buttonClickListener() {
@@ -70,8 +72,8 @@ function buttonClickListener() {
         computerRandomChoice();
         playGame();
     }
-    if (this.getAttribute("id") === "instructions") {
-        getInstructions();
+    if (this.getAttribute("id") === "rules") {
+        getRules();
     }
 }
 
@@ -107,7 +109,7 @@ function playGame(playerChoiceValue, computerChoiceValue) {
  * 
  * Random selection from gameSelection array created and passed to computer choice element.
  * 
- *gameSelection: rock, paper, scissors, lizard or spoke.
+ *gameSelection array: rock, paper, scissors, lizard or spock.
  */
 function computerRandomChoice() {
 
@@ -119,8 +121,8 @@ function computerRandomChoice() {
 /** 
  * 
  * If player wins:
- * 1. increment the playerScore variable by 1. 
- * 2  UI updated to show winning text and new score styled to reflect the player win.
+ * 1. increment the playerScore variable by 1
+ * 2.  UI updated to show winning text and new score styled to reflect the player win.
  */
 
 function playerWon() {
@@ -134,9 +136,8 @@ function playerWon() {
 
 /**
  * If computer wins:
- * 1. increment the computerScore variable by 1
- * 
- * 2 . UI updated to show losing text and new score styled to reflect the player loss.
+ * 1. increment the computerScore variable by 1 
+ * 2. UI updated to show losing text and new score styled to reflect the player loss.
  */
 
 function computerWon() {
@@ -268,9 +269,9 @@ function countTriesLeft() {
  * UX updated to show the rules of the game on toggle mode.
  * 
  */
-function getInstructions() {
+function getRules() {
 
-    let instructionsDiv = document.getElementById('Instructions');
+    let instructionsDiv = document.getElementById('rulesinfo');
     if (instructionsDiv.style.display === "block") {
         instructionsDiv.style.display = "none";
     } else {
