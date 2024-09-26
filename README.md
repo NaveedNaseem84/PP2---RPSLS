@@ -63,7 +63,7 @@ _**Image above generated using https://ui.dev/amiresponsive illustrating the res
 
 ### Features
 
-The user is presented with five pose options - Rock, Paper, Scissors, Lizard or Spock (RPSLS). Any can be selected and is reflected by a green outline on the choice hovered:
+The user is presented with five pose options - rock, paper, scissors, lizard or spock (RPSLS). Any can be selected and is reflected by a green outline on the choice hovered:
 
 ![Choice selection hover state](readme-images/highlighted-choice-pose.png)
 
@@ -284,10 +284,10 @@ A huge thank you to Code Institute for the learning and lesson material which ha
 
 Like my first project, this project has brought with it reasonable learning curve. Ranging from the dos and don’ts from an industry standard point of view to the amazing support available on the slack channels, and the invaluable advice from an amazing mentor. This learning has been noted and any actions arisen as a result to work upon.
 
-One of the main take away points has been around the importance of code refactoring. Understanding that the final product performs and looks as required but aiming to achieve the following for internal code:
+One of the main take away points has been around the importance of code refactoring. Understanding that the final product performs and looks as required, but aiming to achieve the same for code. For example:
 
 1. Re-structuring the code (JavaScript in this case) internally making it more efficient.
 2. Improving code readability so it becomes self-explanatory.
 3. Removing duplication of code.
 
-I have taken this on board as a learning curve with a view to maintaining this on future projects.
+I have taken this on board with a view to maintaining this on future projects.

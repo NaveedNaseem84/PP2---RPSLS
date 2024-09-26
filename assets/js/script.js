@@ -35,8 +35,9 @@ document.addEventListener("DOMContentLoaded", applybuttonEventListener);
 //start of functions
 //*******************
 
-/*Event Listener for when DOM loads to listen for clicks on all the buttons
-Adapted from the Love Maths project from CI. Will be credited in readme.md*/
+/*JS Code for Event Listener when DOM loads to listen for clicks on all the buttons
+Adapted from the Love Maths project from CI. This is in functions applybuttonEventListener 
+and buttonClickListener below. Will be credited in readme.md*/
 
 /**
  * Apply event listener to all buttons on DOM load.
@@ -259,7 +260,7 @@ function countTriesLeft() {
 
         } else {
             gameStatusMessageID.classList.add("style-draw-text");
-            gameStatusMessageID.innerHTML = "It's a Draw!";
+            gameStatusMessageID.innerHTML = "Game Over. It's a Draw!";
         }
     }
 
